@@ -80,3 +80,10 @@ theme: next
 deploy:
   type: git
   repo: https://github.com/mengban/mengban.github.io
+## add by lius
+symbols_count_time:
+  symbols: true
+  time: true
+  total_symbols: true
+  total_time: true
+# add by lius

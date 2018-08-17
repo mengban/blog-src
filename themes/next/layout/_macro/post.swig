@@ -14,6 +14,7 @@
     <div class="reading-progress-bar"></div>
   {% endif %}
 
+
   <article class="{{ post_class }}" itemscope itemtype="http://schema.org/Article">
   {##################}
   {### POST BLOCK ###}
@@ -372,8 +373,12 @@
     <footer class="post-footer">
       {% if post.tags and post.tags.length and not is_index %}
         <div class="post-tags">
+        <!---<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">--->
           {% for tag in post.tags %}
-            <a href="{{ url_for(tag.path) }}" rel="tag"># {{ tag.name }}</a>
+          <!---mod by lius--->
+            <!---<a href="{{ url_for(tag.path) }}" rel="tag"># {{ tag.name }}</a>--->
+            <a href="{{ url_for(tag.path) }}" rel="tag"><i class="fa fa-tag"></i> {{ tag.name }}</a>
+          <!---mod by lius--->
           {% endfor %}
         </div>
       {% endif %}
