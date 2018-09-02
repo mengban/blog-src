@@ -1,9 +1,9 @@
 ---
-title: Momenta后记
+title: python步进切片
 tags: 
-	- momenta
-	- 实习
-categories: "心路"
+	- python
+	- trick
+categories: "python学习札记"
 date: 2018-09-02 21:56:00
 ---
 切片操作对python中所有可以索引的对象都可以切片操作
