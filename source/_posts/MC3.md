@@ -62,7 +62,7 @@ Dinner talker 分别见到了创始人旭东 Faster-RCNN作者 少卿。
 
 ### 先这样吧
 
-``` C{.line-numbers}
+``` C {.line-numbers}
 #define TRUE FALSE
 ```
 

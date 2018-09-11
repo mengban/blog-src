@@ -41,7 +41,7 @@ future: true
 highlight:
   enable: true
   line_number: true
-  auto_detect: false
+  auto_detect: true
   tab_replace:
   
 # Home page setting
@@ -86,4 +86,6 @@ symbols_count_time:
   time: true
   total_symbols: true
   total_time: true
+social:
+  GitHub: https://github.com/mengban || gitHub
 # add by lius
