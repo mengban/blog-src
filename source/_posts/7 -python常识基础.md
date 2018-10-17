@@ -5,7 +5,7 @@ tags:
 	- trick
 categories: "python学习"
 date: 2018-09-11 9:24:00
-updated: 2018-10-16 22:20:00
+updated: 2018-10-17 19:52:00
 ---
 
 ### 1.python求整
@@ -78,9 +78,12 @@ for index,item in enumerate(a):
 '''
 ```
 ### 6.set 求交 并 差集
+set的遍历是无序的。
+不同机器 不同时间跑出的结果都不一样。
 - 交集 : x&y
 - 并集 : x|y
 - 差集 : x-y
+
 
 ### 7.filter 函数
 
@@ -134,3 +137,21 @@ if not X:
 > - 你可以将None复制给任何变量，但是你不能创建其他NoneType对象。
 
 ### 9.牛逼的sum函数。
+sum()的语法是：
+
+>sum(iterable,start)
+
+The sum() function adds start and items of the given iterable from left to right.
+
+---
+sum()参数：
+**iterable**- iterable (list, tuple, dict etc) whose item's sum is to be found. Normally, items of the iterable should be numbers.
+可以是list 元组 字典等可迭代对象。
+**start** (optional) - this value is added to the sum of items of the iterable. The default value of start is 0 (if omitted)
+默认为0.也可以是[]等。
+``` python {.line-numbers}
+a = [[1,3,5,7,9],[2,4,6,8]]
+x = sum(a,[])
+print(x)
+# [1 3 5 7 9 2 4 6 8]
+```

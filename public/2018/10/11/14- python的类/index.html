@@ -116,7 +116,7 @@
 <meta property="og:site_name" content="mengban">
 <meta property="og:description" content="0 坑的实例&amp;#123;.line-numbers&amp;#125;1234class A:	a = []	def foo(self,a):	    pass &amp;#123;.line-numbers&amp;#125;1234class A:		def foo(self,a):	    self.a = []	    pass 这俩啥区别？做该题目时遇到了坑Binary Tree Path.  注意到init方">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-10-11T06:06:00.000Z">
+<meta property="og:updated_time" content="2018-10-17T11:53:00.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="python的类">
 <meta name="twitter:description" content="0 坑的实例&amp;#123;.line-numbers&amp;#125;1234class A:	a = []	def foo(self,a):	    pass &amp;#123;.line-numbers&amp;#125;1234class A:		def foo(self,a):	    self.a = []	    pass 这俩啥区别？做该题目时遇到了坑Binary Tree Path.  注意到init方">
@@ -344,12 +344,24 @@
                 
               
 
-              <time title="创建于：2018-10-11 20:08:00 / 更新于：14:06:00" itemprop="dateCreated datePublished" datetime="2018-10-11T20:08:00+08:00">2018-10-11</time>
+              <time title="创建于：2018-10-11 20:08:00" itemprop="dateCreated datePublished" datetime="2018-10-11T20:08:00+08:00">2018-10-11</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="更新于：2018-10-17 19:53:00" itemprop="dateModified" datetime="2018-10-17T19:53:00+08:00">2018-10-17</time>
               
             
           </span>
@@ -394,7 +406,7 @@
                 
                   <span class="post-meta-item-text">Symbols count in article：</span>
                 
-                <span title="Symbols count in article">350</span>
+                <span title="Symbols count in article">1.2k</span>
               
 
               
@@ -408,7 +420,7 @@
                 
                   <span class="post-meta-item-text">Reading time &asymp;</span>
                 
-                <span title="Reading time">1 mins.</span>
+                <span title="Reading time">2 mins.</span>
               
             </div>
           
@@ -434,6 +446,36 @@
 <blockquote>
 <p>注意到<strong>init</strong>方法的第一个参数永远是self，表示创建的实例本身，因此，在<strong>init</strong>方法内部，就可以把各种属性绑定到self，因为self就指向创建的实例本身。<br>有了<strong>init</strong>方法，在创建实例的时候，就不能传入空的参数了，必须传入与<strong>init</strong>方法匹配的参数，但self不需要传，Python解释器自己会把实例变量传进去：</p>
 </blockquote>
+<h3 id="1-python的对象删除"><a href="#1-python的对象删除" class="headerlink" title="1 python的对象删除"></a>1 python的对象删除</h3><figure class="highlight python"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">a = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]</span><br><span class="line">b = a</span><br><span class="line">b.pop()</span><br><span class="line">print(a)</span><br><span class="line"><span class="comment"># [1,2]</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#id() 函数用于获取对象的内存地址。</span></span><br><span class="line">id(a)</span><br><span class="line"><span class="comment">#2298578344904</span></span><br><span class="line">id(b)</span><br><span class="line"><span class="comment">#2298578344904</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">del</span>(b)</span><br><span class="line">id(a)</span><br><span class="line"><span class="comment">##2298578344904</span></span><br><span class="line">id(b)</span><br><span class="line"><span class="comment">#name 'b' is not defined</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>del删除的是变量，而不是数据，解除了变量和数据的联系。</p>
+</blockquote>
+<p>以上现象说明了：</p>
+<ul>
+<li>1.’=’赋值的两个对象具有相同的内存地址。</li>
+<li>2.修改其中一个 另外一个值也会受到影响.(类似于C++中的指针)</li>
+<li>3.del其中一个 另外一个却不受影响.(类似于C++中引用<blockquote>
+<p>看网上的总结：</p>
+<ul>
+<li>1.首先介绍python的对象引用<blockquote>
+<ul>
+<li>a. python不允许程序员选择采用传值还是传引用。Python参数传递采用的肯定是<strong>传对象引用</strong>的方式。实际上，这种方式相当于传值和传引用的一种综合。如果函数收到的是一个可变对象（比如字典或者列表）的引用，就能修改对象的原始值——相当于通过<strong>传引用</strong>来传递对象。如果函数收到的是一个不可变对象（比如数字、字符或者元组）的引用，就不能直接修改原始对象——相当于通过<strong>传值</strong>来传递对象。</li>
+<li>b. 当人们复制列表或字典时，就复制了对象列表的引用同，如果改变引用的值，则修改了原始的参数。<ul>
+<li>c . 为了简化内存管理，Python通过引用计数机制实现自动垃圾回收功能，Python中的每个对象都有一个引用计数，用来计数该对象在不同场所分别被引用了多少次。每当引用一次Python对象，相应的引用计数就增1，每当消毁一次Python对象，则相应的引用就减1，只有当引用计数为零时，才真正从内存中删除Python对象.</li>
+</ul>
+</li>
+</ul>
+</blockquote>
+</li>
+<li><ol start="2">
+<li>del函数。删除引用，而不是删除对象。对象由自动垃圾回收机制删除。解释了删除掉a之后 b还有值的缘故。<figure class="highlight python"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">a = <span class="number">2</span></span><br><span class="line">b = a</span><br><span class="line">b = <span class="number">3</span></span><br><span class="line">print(a)</span><br><span class="line"><span class="comment">#2</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+</li>
+</ul>
+</blockquote>
+</li>
+</ul>
 
       
     </div>
@@ -671,7 +713,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#0-坑的实例"><span class="nav-number">1.</span> <span class="nav-text">0 坑的实例</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#0-坑的实例"><span class="nav-number">1.</span> <span class="nav-text">0 坑的实例</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-python的对象删除"><span class="nav-number">2.</span> <span class="nav-text">1 python的对象删除</span></a></li></ol></div>
             
 
           </div>
@@ -706,7 +748,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="Symbols count total">11k</span>
+    <span title="Symbols count total">13k</span>
   
 
   
@@ -715,7 +757,7 @@
       <i class="fa fa-coffee"></i>
     </span>
     
-    <span title="Reading time total">21 mins.</span>
+    <span title="Reading time total">23 mins.</span>
   
 </div>
 
