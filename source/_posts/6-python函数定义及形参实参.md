@@ -1,5 +1,5 @@
 ---
-title: python步进切片
+title: python函数定义及形参实参
 tags: 
 	- python
 	- trick

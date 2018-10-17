@@ -1,5 +1,5 @@
 ---
-title: python-list删除
+title: python-向量处理
 tags: 
 	- python
 	- trick
