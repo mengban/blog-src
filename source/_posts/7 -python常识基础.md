@@ -5,8 +5,9 @@ tags:
 	- trick
 categories: "python学习"
 date: 2018-09-11 9:24:00
-updated: 2018-10-17 19:52:00
+updated: 2018-10-18 19:52:00
 ---
+**To be added:目录**
 
 ### 1.python求整
 ```python {.line-numbers}
@@ -40,7 +41,7 @@ a^b^a
 | >> |	**右移动运算符**：把">>"左边的运算数的各二进位全部右移若干位，>> 右边的数字指定了移动的位数  |	a >> 2 输出结果 15 ，二进制解释： 0000 1111 |
 
 ### 3.reduce
-reduce(f,list)函数是python内置的一个高阶函数。会对参数序列中元素进行累积。
+>reduce(f,list)函数是python内置的一个高阶函数。会对参数序列中元素进行累积。
 函数将一个数据集合（list tuple）等的所有数据进行一下操作：用传给reduce中的function（必须有2个参数），先对集合中的第1,2个元素进行操作，然后将结果再与第3个数据进行function运算，最后得到一个结果。
 ``` python {.line-numbers}
 from functools import reduce  # python3 neeeds 
@@ -155,3 +156,68 @@ x = sum(a,[])
 print(x)
 # [1 3 5 7 9 2 4 6 8]
 ```
+
+### 10. 单引号 双引号 三引号
+> - 1.单引号和双引号是通用的。
+> - 2.在要表达的字符串中有单引号出现时使用双引号方便。
+> - 3.在要表达的字符串中有单引号出现时使用单引号方便。
+> - 4.三引号的出现是直接可以做在引号内回车。当然还可以做注释块啦。
+> - 5.1234均体现了python的任性化。
+``` python {.line-numbers}
+str1 = " I'm OK, thank u"
+str2 = 'Hello,MI "Fans"'
+str3 = ''' Are
+You
+OK
+'''
+print(str1,str2,str3)
+'''
+I'm OK, thank u
+Hello,MI "Fans"
+Are
+You
+OK
+'''
+```
+
+### 11. python 赋值 浅拷贝 深拷贝 
+> 1.直接赋值。其实就是对象的引用。(别名)。赋值引用，都指向同一个对象。
+> 2.浅拷贝。拷贝父对象，不会拷贝父对象的内部子对象。两者是一个独立的对象，但他们的子对象还是指向统一对象（是引用）。
+> 3.深拷贝。copy模块的deepcopy()方法，完全拷贝了父对象个其子对象。两者是完全独立的。
+``` python {.line-numbers}
+import copy
+a = [1,2,3,[4,5,6]]
+b = a.copy()
+a[3].append(7)
+c = copy.deepcopy(a)
+print(a,b,c)
+print(id(a),id(b),id(c))
+# [1, 2, 3, [4, 5, 6, 7]] [1, 2, 3, [4, 5, 6, 7]] [1, 2, 3, [4, 5, 6, 7]]
+# 2164258934920 2164258672008 2164258840008
+print(id(a[1]),id(b[1]))
+1616669792 1616669792
+```
+
+### 12.装饰函数
+参见[装饰函数](https://foofish.net/python-dec>orator.html)。写的是真好。
+
+### 13.map/reduce函数。起源于Google鼎鼎大名 Map/Reduce论文。
+>python中map()、filter()、reduce()这三个都是应用于序列的内置函数。
+map(function, iterable, …)
+map()函数接收两个参数，一个是函数，一个是序列，map将传入的函数依次作用到序列的每个元素，并把结果作为新的**list**(python2.7) **Iterator**(python3 使用之前需要list化)返回。
+stackoverflow上有人说可以这样理解map()：
+``` python {.line-numbers}
+map(f, iterable)
+#基本上等于：
+[f(x) for x in iterable]
+```
+
+### 14.赋值
+>多重赋值：x=y=z=1
+多元赋值：x,y,z=1,3,'a string'
+增量赋值：x+=1
+
+### 15.
+>sys.argv是传递给python脚本的命令行参数【字符串】列表
+argv[0]为该脚本自身路径，其余为命令行参数。
+和shell脚本的 $0 $1 $2 $3 $4一样。
