@@ -116,7 +116,7 @@
 <meta property="og:site_name" content="mengban">
 <meta property="og:description" content="1.shell变量linux中shell变量$#,$@,$0,$1,$2的含义解释| 参数形式          |           含义 || ——-           | ——-       ||$0| 当前脚本文件名||$n| 传递给脚本或函数的参数。代表第n个参数。n不能大于10。|$#| 传递给脚本或者函数的参数个数。||$| 传递给脚本或函数的所有参数。||$@| 同上。被双引号">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-09-29T07:41:30.386Z">
+<meta property="og:updated_time" content="2018-11-15T13:23:27.060Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="shell 变量含义">
 <meta name="twitter:description" content="1.shell变量linux中shell变量$#,$@,$0,$1,$2的含义解释| 参数形式          |           含义 || ——-           | ——-       ||$0| 当前脚本文件名||$n| 传递给脚本或函数的参数。代表第n个参数。n不能大于10。|$#| 传递给脚本或者函数的参数个数。||$| 传递给脚本或函数的所有参数。||$@| 同上。被双引号">
@@ -361,7 +361,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="更新于：2018-09-29 15:41:30" itemprop="dateModified" datetime="2018-09-29T15:41:30+08:00">2018-09-29</time>
+                <time title="更新于：2018-11-15 21:23:27" itemprop="dateModified" datetime="2018-11-15T21:23:27+08:00">2018-11-15</time>
               
             
           </span>
@@ -406,7 +406,7 @@
                 
                   <span class="post-meta-item-text">Symbols count in article：</span>
                 
-                <span title="Symbols count in article">650</span>
+                <span title="Symbols count in article">1.8k</span>
               
 
               
@@ -420,7 +420,7 @@
                 
                   <span class="post-meta-item-text">Reading time &asymp;</span>
                 
-                <span title="Reading time">1 mins.</span>
+                <span title="Reading time">3 mins.</span>
               
             </div>
           
@@ -441,6 +441,10 @@
 
       
         <h3 id="1-shell变量"><a href="#1-shell变量" class="headerlink" title="1.shell变量"></a>1.shell变量</h3><p>linux中shell变量$#,$@,$0,$1,$2的含义解释<br>| 参数形式          |           含义 |<br>| ——-           | ——-       |<br>|$0| 当前脚本文件名|<br>|$n| 传递给脚本或函数的参数。代表第n个参数。n不能大于10。<br>|$#| 传递给脚本或者函数的参数个数。|<br>|$<em>| 传递给脚本或函数的所有参数。|<br>|$@| 同上。被双引号(“ “)包含时，与 $</em> 稍有不同。|<br>|$?| 上个命令的退出状态或者函数返回值。 |<br>|$$| 当前shell进程ID。|<br><figure class="highlight bash"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"File Name: <span class="variable">$0</span>"</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"First Parameter : <span class="variable">$1</span>"</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"First Parameter : <span class="variable">$2</span>"</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"Quoted Values: <span class="variable">$@</span>"</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"Quoted Values: $*"</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"Total Number of Parameters : <span class="variable">$#</span>"</span></span><br><span class="line"><span class="comment">### </span></span><br><span class="line">./test.sh one two</span><br><span class="line"><span class="comment"># File Name : ./test.sh</span></span><br><span class="line"><span class="comment"># First Parameter : one</span></span><br><span class="line"><span class="comment"># Second Parameter : two</span></span><br><span class="line"><span class="comment"># Quoted Values: one two</span></span><br><span class="line"><span class="comment"># Quoted Values: one twp</span></span><br><span class="line"><span class="comment"># Total Number of Parameters : 2</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="2-提取文件名"><a href="#2-提取文件名" class="headerlink" title="2.提取文件名"></a>2.提取文件名</h3><p>${}用于字符串的读取，提取和替换功能，可以使用${} 提取字符串<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">1、提取文件名</span><br><span class="line"><span class="comment"># var=/dir1/dir2/file.txt</span></span><br><span class="line"><span class="comment"># echo $&#123;var##*/&#125;</span></span><br><span class="line">file.txt</span><br><span class="line"></span><br><span class="line">2、提取后缀</span><br><span class="line"><span class="comment"># var=/dir1/dir2/file.txt</span></span><br><span class="line"><span class="comment"># echo $&#123;var##*.&#125;</span></span><br><span class="line">txt</span><br><span class="line"></span><br><span class="line">3、提取不带后缀的文件名，分两步</span><br><span class="line"><span class="comment"># var=/dir1/dir2/file.txt</span></span><br><span class="line"><span class="comment"># tmp=$&#123;var##*/&#125;</span></span><br><span class="line"><span class="comment"># echo $tmp</span></span><br><span class="line">file.txt</span><br><span class="line"><span class="comment"># echo $&#123;tmp%.*&#125;</span></span><br><span class="line">file</span><br><span class="line"></span><br><span class="line">5、提取目录</span><br><span class="line"><span class="comment"># var=/dir1/dir2/file.txt</span></span><br><span class="line"><span class="comment"># echo $&#123;var%/*&#125;</span></span><br><span class="line">/dir1/dir2</span><br><span class="line"></span><br><span class="line">6、</span><br><span class="line"><span class="comment"># var=/dir1/dir2/file.txt</span></span><br><span class="line"><span class="comment"># echo $&#123;var%%.*&#125;</span></span><br><span class="line">/dir1/dir2/file</span><br><span class="line"></span><br><span class="line">7、</span><br><span class="line"><span class="comment"># var=/dir1/dir2/file.tar.gz</span></span><br><span class="line"><span class="comment"># echo $&#123;var#*.&#125;</span></span><br><span class="line">tar.gz</span><br></pre></td></tr></table></figure></p>
+<p>8、${}总结<br>${}的使用是变量的提取和替换等操作；<br>#：表示从左边算起第一个<br>%：表示从右边算起第一个<br>##：表示从左边算起最后一个<br>%%：表示从右边算起最后一个<br>换句话来说，＃总是表示左边算起，％总是表示右边算起。</p>
+<p><em>：表示要删除的内容，对于#和##的情况，它位于指定字符（例子中的’/‘和’.’）的左边，表于删除指定字符及其左边的内容；对于%和%%的情况，它位于指定字符（例子中的’/‘和’.’）的右边，表示删除指定字符及其右边的内容。这里的’</em>‘的位置不能互换，即不能把*号放在#或##的右边，反之亦然。</p>
+<p>使用文件目录的专有命令basename和dirname<br>1、提取文件名，注意：basename是一个命令，使用$(), 而不是${}<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># var=/dir1/dir2/file.txt</span></span><br><span class="line"><span class="comment"># echo $(basename $var)</span></span><br><span class="line">file.txt</span><br><span class="line"></span><br><span class="line">2、提取不带后缀的文件名</span><br><span class="line"><span class="comment"># var=/dir1/dir2/file.txt</span></span><br><span class="line"><span class="comment"># echo $(basename $var .txt)</span></span><br><span class="line">file</span><br><span class="line"></span><br><span class="line">3、提取目录</span><br><span class="line"><span class="comment"># var=/dir1/dir2/file.txt</span></span><br><span class="line"><span class="comment"># dirname $var</span></span><br><span class="line">/dir1/dir2</span><br><span class="line"><span class="comment"># echo $(dirname $var)</span></span><br><span class="line">/dir1/dir2</span><br><span class="line"><span class="comment"># dir=/dir1/dir2/</span></span><br><span class="line"><span class="comment"># dirname $dir</span></span><br><span class="line">/dir1</span><br></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -483,8 +487,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/09/11/7 -python常识基础/" rel="next" title="python步进切片">
-                <i class="fa fa-chevron-left"></i> python步进切片
+              <a href="/2018/09/11/7 -python常识基础/" rel="next" title="python常识基础">
+                <i class="fa fa-chevron-left"></i> python常识基础
               </a>
             
           </div>
@@ -493,8 +497,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/09/18/11-tensorflow保存模型/" rel="prev" title="tensorflow 模型保存">
-                tensorflow 模型保存 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/09/18/9 -linux运维/" rel="prev" title="Ubuntu系统磁盘相关命令">
+                Ubuntu系统磁盘相关命令 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -565,7 +569,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">15</span>
+                    <span class="site-state-item-count">18</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -592,7 +596,13 @@
                     
                       
                     
-                    <span class="site-state-item-count">7</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">10</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -633,7 +643,17 @@
                     
                       
                     
-                    <span class="site-state-item-count">14</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">19</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -678,7 +698,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-shell变量"><span class="nav-number">1.</span> <span class="nav-text">1.shell变量</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-shell变量"><span class="nav-number">1.</span> <span class="nav-text">1.shell变量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-提取文件名"><span class="nav-number">2.</span> <span class="nav-text">2.提取文件名</span></a></li></ol></div>
             
 
           </div>
@@ -713,7 +733,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="Symbols count total">14k</span>
+    <span title="Symbols count total">16k</span>
   
 
   
@@ -722,7 +742,7 @@
       <i class="fa fa-coffee"></i>
     </span>
     
-    <span title="Reading time total">26 mins.</span>
+    <span title="Reading time total">28 mins.</span>
   
 </div>
 

@@ -35,3 +35,74 @@ echo "Total Number of Parameters : $#"
 # Quoted Values: one twp
 # Total Number of Parameters : 2
 ```
+
+
+### 2.提取文件名
+
+${}用于字符串的读取，提取和替换功能，可以使用${} 提取字符串
+``` Bash
+1、提取文件名
+# var=/dir1/dir2/file.txt
+# echo ${var##*/}
+file.txt
+
+2、提取后缀
+# var=/dir1/dir2/file.txt
+# echo ${var##*.}
+txt
+
+3、提取不带后缀的文件名，分两步
+# var=/dir1/dir2/file.txt
+# tmp=${var##*/}
+# echo $tmp
+file.txt
+# echo ${tmp%.*}
+file
+
+5、提取目录
+# var=/dir1/dir2/file.txt
+# echo ${var%/*}
+/dir1/dir2
+
+6、
+# var=/dir1/dir2/file.txt
+# echo ${var%%.*}
+/dir1/dir2/file
+
+7、
+# var=/dir1/dir2/file.tar.gz
+# echo ${var#*.}
+tar.gz
+```
+8、${}总结
+${}的使用是变量的提取和替换等操作；
+\#：表示从左边算起第一个
+%：表示从右边算起第一个
+\##：表示从左边算起最后一个
+%%：表示从右边算起最后一个
+换句话来说，＃总是表示左边算起，％总是表示右边算起。
+
+*：表示要删除的内容，对于#和##的情况，它位于指定字符（例子中的'/'和'.'）的左边，表于删除指定字符及其左边的内容；对于%和%%的情况，它位于指定字符（例子中的'/'和'.'）的右边，表示删除指定字符及其右边的内容。这里的'*'的位置不能互换，即不能把*号放在#或##的右边，反之亦然。
+
+使用文件目录的专有命令basename和dirname
+1、提取文件名，注意：basename是一个命令，使用$(), 而不是${}
+``` Bash
+# var=/dir1/dir2/file.txt
+# echo $(basename $var)
+file.txt
+
+2、提取不带后缀的文件名
+# var=/dir1/dir2/file.txt
+# echo $(basename $var .txt)
+file
+
+3、提取目录
+# var=/dir1/dir2/file.txt
+# dirname $var
+/dir1/dir2
+# echo $(dirname $var)
+/dir1/dir2
+# dir=/dir1/dir2/
+# dirname $dir
+/dir1
+```

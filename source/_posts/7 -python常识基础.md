@@ -1,11 +1,11 @@
 ---
-title: python步进切片
+title: python常识基础
 tags: 
 	- python
 	- trick
 categories: "python学习"
 date: 2018-09-11 9:24:00
-updated: 2018-10-18 19:52:00
+updated: 2018-11-16 11:17:00
 ---
 **To be added:目录**
 
