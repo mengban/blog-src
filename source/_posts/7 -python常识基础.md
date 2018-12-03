@@ -221,3 +221,45 @@ map(f, iterable)
 >sys.argv是传递给python脚本的命令行参数【字符串】列表
 argv[0]为该脚本自身路径，其余为命令行参数。
 和shell脚本的 $0 $1 $2 $3 $4一样。
+
+### 16.zip 函数
+> zip()函数用于将可迭代的对象(如list dict )作为参数，将对象中对应元素进行打包成一个个元组，然后返回由这些元组组成的对象。**返回组成的对象节省了内存**可以使用list()俩将输出对象那个转换为列表.如果各个迭代器元素个数不一样 则返回列表长度于最短对象相同。zip(*zipped) 解压缩。
+``` python {.line-numbers}
+zipped =  zip([1,2,3],[4,5,6])
+zipped
+#<zip at 0x16fd026dbc8>
+list(zipped)
+[(1, 4), (2, 5), (3, 6)]
+
+a,b = zip(*zipped) #error 了 很奇怪
+
+zipped =  zip([1,2,3],[4,5,6]) ##这样就可以 很奇怪
+a,b = zip(*zipped)
+a
+(1,2,3)
+b
+(4,5,6)
+
+```
+
+### 17 .join()函数
+> 用于将**序列中的元素**以指定的字符连接生成一个**新的字符串**。参数可以是元组 列表 字典 字符串。
+语法：str.join(sequence)
+``` python {.line-numbers}
+
+a = ['1','2','3']
+st = ''.join(a)
+#'123'
+
+#对于字典类型 只会将key进行连接
+seq = {'hello':'nihao','good':2,'boy':3,'doiido':4}
+print('-'.join(seq))
+# hello-good-boy-doiido
+```
+
+### 18 可迭代对象。
+>可以直接作用于for循环的数据类型有以下几种：
+一类是集合数据类型，如list、tuple、dict、set、str等；
+一类是generator，包括生成器和带yield的generator function。
+这些可以直接作用于for循环的对象统称为可迭代对象：Iterable。
+可以使用isinstance()判断一个对象是否是Iterable对象：

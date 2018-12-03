@@ -406,7 +406,7 @@
                 
                   <span class="post-meta-item-text">Symbols count in article：</span>
                 
-                <span title="Symbols count in article">4.4k</span>
+                <span title="Symbols count in article">5.3k</span>
               
 
               
@@ -420,7 +420,7 @@
                 
                   <span class="post-meta-item-text">Reading time &asymp;</span>
                 
-                <span title="Reading time">8 mins.</span>
+                <span title="Reading time">10 mins.</span>
               
             </div>
           
@@ -505,6 +505,15 @@
 </blockquote>
 <h3 id="15"><a href="#15" class="headerlink" title="15."></a>15.</h3><blockquote>
 <p>sys.argv是传递给python脚本的命令行参数【字符串】列表<br>argv[0]为该脚本自身路径，其余为命令行参数。<br>和shell脚本的 $0 $1 $2 $3 $4一样。</p>
+</blockquote>
+<h3 id="16-zip-函数"><a href="#16-zip-函数" class="headerlink" title="16.zip 函数"></a>16.zip 函数</h3><blockquote>
+<p>zip()函数用于将可迭代的对象(如list dict )作为参数，将对象中对应元素进行打包成一个个元组，然后返回由这些元组组成的对象。<strong>返回组成的对象节省了内存</strong>可以使用list()俩将输出对象那个转换为列表.如果各个迭代器元素个数不一样 则返回列表长度于最短对象相同。zip(*zipped) 解压缩。<br><figure class="highlight python"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">zipped =  zip([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>],[<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>])</span><br><span class="line">zipped</span><br><span class="line"><span class="comment">#&lt;zip at 0x16fd026dbc8&gt;</span></span><br><span class="line">list(zipped)</span><br><span class="line">[(<span class="number">1</span>, <span class="number">4</span>), (<span class="number">2</span>, <span class="number">5</span>), (<span class="number">3</span>, <span class="number">6</span>)]</span><br><span class="line"></span><br><span class="line">a,b = zip(*zipped) <span class="comment">#error 了 很奇怪</span></span><br><span class="line"></span><br><span class="line">zipped =  zip([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>],[<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>]) <span class="comment">##这样就可以 很奇怪</span></span><br><span class="line">a,b = zip(*zipped)</span><br><span class="line">a</span><br><span class="line">(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>)</span><br><span class="line">b</span><br><span class="line">(<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>)</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<h3 id="17-join-函数"><a href="#17-join-函数" class="headerlink" title="17 .join()函数"></a>17 .join()函数</h3><blockquote>
+<p>用于将<strong>序列中的元素</strong>以指定的字符连接生成一个<strong>新的字符串</strong>。参数可以是元组 列表 字典 字符串。<br>语法：str.join(sequence)<br><figure class="highlight python"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">a = [<span class="string">'1'</span>,<span class="string">'2'</span>,<span class="string">'3'</span>]</span><br><span class="line">st = <span class="string">''</span>.join(a)</span><br><span class="line"><span class="comment">#'123'</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#对于字典类型 只会将key进行连接</span></span><br><span class="line">seq = &#123;<span class="string">'hello'</span>:<span class="string">'nihao'</span>,<span class="string">'good'</span>:<span class="number">2</span>,<span class="string">'boy'</span>:<span class="number">3</span>,<span class="string">'doiido'</span>:<span class="number">4</span>&#125;</span><br><span class="line">print(<span class="string">'-'</span>.join(seq))</span><br><span class="line"><span class="comment"># hello-good-boy-doiido</span></span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<h3 id="18-可迭代对象。"><a href="#18-可迭代对象。" class="headerlink" title="18 可迭代对象。"></a>18 可迭代对象。</h3><blockquote>
+<p>可以直接作用于for循环的数据类型有以下几种：<br>一类是集合数据类型，如list、tuple、dict、set、str等；<br>一类是generator，包括生成器和带yield的generator function。<br>这些可以直接作用于for循环的对象统称为可迭代对象：Iterable。<br>可以使用isinstance()判断一个对象是否是Iterable对象：</p>
 </blockquote>
 
       
@@ -630,7 +639,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">18</span>
+                    <span class="site-state-item-count">20</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -663,7 +672,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">10</span>
+                      
+                    
+                    <span class="site-state-item-count">11</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -714,7 +725,11 @@
                     
                       
                     
-                    <span class="site-state-item-count">19</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">21</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -759,7 +774,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-python求整"><span class="nav-number">1.</span> <span class="nav-text">1.python求整</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-位操作"><span class="nav-number">2.</span> <span class="nav-text">2.位操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-lambda"><span class="nav-number">3.</span> <span class="nav-text">4.lambda</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-enumerate"><span class="nav-number">4.</span> <span class="nav-text">5.enumerate</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-set-求交-并-差集"><span class="nav-number">5.</span> <span class="nav-text">6.set 求交 并 差集</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-filter-函数"><span class="nav-number">6.</span> <span class="nav-text">7.filter 函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-python-中的None-True-False"><span class="nav-number">7.</span> <span class="nav-text">8.python 中的None True False</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#9-牛逼的sum函数。"><span class="nav-number">8.</span> <span class="nav-text">9.牛逼的sum函数。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#10-单引号-双引号-三引号"><span class="nav-number">9.</span> <span class="nav-text">10. 单引号 双引号 三引号</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#11-python-赋值-浅拷贝-深拷贝"><span class="nav-number">10.</span> <span class="nav-text">11. python 赋值 浅拷贝 深拷贝</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#12-装饰函数"><span class="nav-number">11.</span> <span class="nav-text">12.装饰函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#13-map-reduce函数。起源于Google鼎鼎大名-Map-Reduce论文。"><span class="nav-number">12.</span> <span class="nav-text">13.map/reduce函数。起源于Google鼎鼎大名 Map/Reduce论文。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#14-赋值"><span class="nav-number">13.</span> <span class="nav-text">14.赋值</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#15"><span class="nav-number">14.</span> <span class="nav-text">15.</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-python求整"><span class="nav-number">1.</span> <span class="nav-text">1.python求整</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-位操作"><span class="nav-number">2.</span> <span class="nav-text">2.位操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-lambda"><span class="nav-number">3.</span> <span class="nav-text">4.lambda</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-enumerate"><span class="nav-number">4.</span> <span class="nav-text">5.enumerate</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-set-求交-并-差集"><span class="nav-number">5.</span> <span class="nav-text">6.set 求交 并 差集</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-filter-函数"><span class="nav-number">6.</span> <span class="nav-text">7.filter 函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-python-中的None-True-False"><span class="nav-number">7.</span> <span class="nav-text">8.python 中的None True False</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#9-牛逼的sum函数。"><span class="nav-number">8.</span> <span class="nav-text">9.牛逼的sum函数。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#10-单引号-双引号-三引号"><span class="nav-number">9.</span> <span class="nav-text">10. 单引号 双引号 三引号</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#11-python-赋值-浅拷贝-深拷贝"><span class="nav-number">10.</span> <span class="nav-text">11. python 赋值 浅拷贝 深拷贝</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#12-装饰函数"><span class="nav-number">11.</span> <span class="nav-text">12.装饰函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#13-map-reduce函数。起源于Google鼎鼎大名-Map-Reduce论文。"><span class="nav-number">12.</span> <span class="nav-text">13.map/reduce函数。起源于Google鼎鼎大名 Map/Reduce论文。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#14-赋值"><span class="nav-number">13.</span> <span class="nav-text">14.赋值</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#15"><span class="nav-number">14.</span> <span class="nav-text">15.</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#16-zip-函数"><span class="nav-number">15.</span> <span class="nav-text">16.zip 函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#17-join-函数"><span class="nav-number">16.</span> <span class="nav-text">17 .join()函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#18-可迭代对象。"><span class="nav-number">17.</span> <span class="nav-text">18 可迭代对象。</span></a></li></ol></div>
             
 
           </div>
@@ -794,7 +809,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="Symbols count total">16k</span>
+    <span title="Symbols count total">17k</span>
   
 
   
@@ -803,7 +818,7 @@
       <i class="fa fa-coffee"></i>
     </span>
     
-    <span title="Reading time total">28 mins.</span>
+    <span title="Reading time total">30 mins.</span>
   
 </div>
 

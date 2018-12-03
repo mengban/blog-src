@@ -108,25 +108,25 @@
 
 
 
-  <meta name="description" content="1.swap分区大小. 内核空间交换区分利用参数查看命令&amp;#123;.line-numbers&amp;#125;1cat /proc/sys/vm/swappiness   cat /proc/sys/vm/swappiness 2.调整分区大小.通过gparted 软件 3.查看磁盘命令.&amp;#123;.line-numbers&amp;#125;1df -hl 4.显示隐藏文件&amp;#123;.line-numb">
-<meta name="keywords" content="磁盘,运维">
+  <meta name="description" content="1.全排列">
+<meta name="keywords" content="算法,interview">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Ubuntu系统磁盘相关命令">
-<meta property="og:url" content="http://yoursite.com/2018/09/18/9 -linux运维/index.html">
+<meta property="og:title" content="面试经典算法">
+<meta property="og:url" content="http://yoursite.com/2018/11/28/20-经典算法/index.html">
 <meta property="og:site_name" content="mengban">
-<meta property="og:description" content="1.swap分区大小. 内核空间交换区分利用参数查看命令&amp;#123;.line-numbers&amp;#125;1cat /proc/sys/vm/swappiness   cat /proc/sys/vm/swappiness 2.调整分区大小.通过gparted 软件 3.查看磁盘命令.&amp;#123;.line-numbers&amp;#125;1df -hl 4.显示隐藏文件&amp;#123;.line-numb">
+<meta property="og:description" content="1.全排列">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-09-29T07:25:55.354Z">
+<meta property="og:updated_time" content="2018-11-28T01:22:00.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Ubuntu系统磁盘相关命令">
-<meta name="twitter:description" content="1.swap分区大小. 内核空间交换区分利用参数查看命令&amp;#123;.line-numbers&amp;#125;1cat /proc/sys/vm/swappiness   cat /proc/sys/vm/swappiness 2.调整分区大小.通过gparted 软件 3.查看磁盘命令.&amp;#123;.line-numbers&amp;#125;1df -hl 4.显示隐藏文件&amp;#123;.line-numb">
+<meta name="twitter:title" content="面试经典算法">
+<meta name="twitter:description" content="1.全排列">
 
 
 
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/09/18/9 -linux运维/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/11/28/20-经典算法/"/>
 
 
 
@@ -136,7 +136,7 @@
   };
 </script>
 
-  <title>Ubuntu系统磁盘相关命令 | mengban</title>
+  <title>面试经典算法 | mengban</title>
   
 
 
@@ -302,7 +302,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/18/9 -linux运维/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/28/20-经典算法/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="博主">
@@ -319,7 +319,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Ubuntu系统磁盘相关命令
+          <h1 class="post-title" itemprop="name headline">面试经典算法
               
             
           </h1>
@@ -344,25 +344,9 @@
                 
               
 
-              <time title="创建于：2018-09-18 19:58:00" itemprop="dateCreated datePublished" datetime="2018-09-18T19:58:00+08:00">2018-09-18</time>
+              <time title="创建于：2018-11-28 09:22:00" itemprop="dateCreated datePublished" datetime="2018-11-28T09:22:00+08:00">2018-11-28</time>
             
 
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="更新于：2018-09-29 15:25:55" itemprop="dateModified" datetime="2018-09-29T15:25:55+08:00">2018-09-29</time>
-              
             
           </span>
 
@@ -378,7 +362,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/linux/" itemprop="url" rel="index"><span itemprop="name">linux</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/算法/" itemprop="url" rel="index"><span itemprop="name">算法</span></a></span>
 
                 
                 
@@ -406,7 +390,7 @@
                 
                   <span class="post-meta-item-text">Symbols count in article：</span>
                 
-                <span title="Symbols count in article">253</span>
+                <span title="Symbols count in article">5</span>
               
 
               
@@ -440,16 +424,7 @@
       
 
       
-        <h3 id="1-swap分区大小"><a href="#1-swap分区大小" class="headerlink" title="1.swap分区大小."></a>1.swap分区大小.</h3><ul>
-<li>内核空间交换区分利用参数查看命令<figure class="highlight bash"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat /proc/sys/vm/swappiness</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>cat /proc/sys/vm/swappiness</p>
-<h3 id="2-调整分区大小"><a href="#2-调整分区大小" class="headerlink" title="2.调整分区大小."></a>2.调整分区大小.</h3><p>通过gparted 软件</p>
-<h3 id="3-查看磁盘命令"><a href="#3-查看磁盘命令" class="headerlink" title="3.查看磁盘命令."></a>3.查看磁盘命令.</h3><figure class="highlight bash"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df -hl</span><br></pre></td></tr></table></figure>
-<h3 id="4-显示隐藏文件"><a href="#4-显示隐藏文件" class="headerlink" title="4.显示隐藏文件"></a>4.显示隐藏文件</h3><figure class="highlight bash"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ctrl+h</span><br></pre></td></tr></table></figure>
-<h3 id="5-adduser-useradd"><a href="#5-adduser-useradd" class="headerlink" title="5.adduser useradd"></a>5.adduser useradd</h3><p>adduser 会自动创建用户目录。</p>
-
+        <h3 id="1-全排列"><a href="#1-全排列" class="headerlink" title="1.全排列"></a>1.全排列</h3>
       
     </div>
 
@@ -471,13 +446,13 @@
         <!---<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">--->
           
           <!---mod by lius--->
-            <!---<a href="/tags/磁盘/" rel="tag"># 磁盘</a>--->
-            <a href="/tags/磁盘/" rel="tag"><i class="fa fa-tag"></i> 磁盘</a>
+            <!---<a href="/tags/算法/" rel="tag"># 算法</a>--->
+            <a href="/tags/算法/" rel="tag"><i class="fa fa-tag"></i> 算法</a>
           <!---mod by lius--->
           
           <!---mod by lius--->
-            <!---<a href="/tags/运维/" rel="tag"># 运维</a>--->
-            <a href="/tags/运维/" rel="tag"><i class="fa fa-tag"></i> 运维</a>
+            <!---<a href="/tags/interview/" rel="tag"># interview</a>--->
+            <a href="/tags/interview/" rel="tag"><i class="fa fa-tag"></i> interview</a>
           <!---mod by lius--->
           
         </div>
@@ -491,8 +466,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/09/12/8 -shell知识/" rel="next" title="shell 变量含义">
-                <i class="fa fa-chevron-left"></i> shell 变量含义
+              <a href="/2018/11/19/19-memo/" rel="next" title="面试memo">
+                <i class="fa fa-chevron-left"></i> 面试memo
               </a>
             
           </div>
@@ -500,10 +475,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/09/18/11-tensorflow保存模型/" rel="prev" title="tensorflow 模型保存">
-                tensorflow 模型保存 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -708,7 +679,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-swap分区大小"><span class="nav-number">1.</span> <span class="nav-text">1.swap分区大小.</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-调整分区大小"><span class="nav-number">2.</span> <span class="nav-text">2.调整分区大小.</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-查看磁盘命令"><span class="nav-number">3.</span> <span class="nav-text">3.查看磁盘命令.</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-显示隐藏文件"><span class="nav-number">4.</span> <span class="nav-text">4.显示隐藏文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-adduser-useradd"><span class="nav-number">5.</span> <span class="nav-text">5.adduser useradd</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-全排列"><span class="nav-number">1.</span> <span class="nav-text">1.全排列</span></a></li></ol></div>
             
 
           </div>

@@ -301,6 +301,419 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/18/11-tensorflow保存模型/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="博主">
+      <meta itemprop="description" content="This is description">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="mengban">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/09/18/11-tensorflow保存模型/" itemprop="url">
+                  tensorflow 模型保存
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建于：2018-09-18 19:58:00" itemprop="dateCreated datePublished" datetime="2018-09-18T19:58:00+08:00">2018-09-18</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="更新于：2018-09-29 15:22:48" itemprop="dateModified" datetime="2018-09-29T15:22:48+08:00">2018-09-29</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/tensorflow/" itemprop="url" rel="index"><span itemprop="name">tensorflow</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Symbols count in article：</span>
+                
+                <span title="Symbols count in article">705</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">1 mins.</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="1-tensorflow模型保存"><a href="#1-tensorflow模型保存" class="headerlink" title="1. tensorflow模型保存"></a>1. tensorflow模型保存</h3><figure class="highlight python"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> tensorflow <span class="keyword">as</span> tf</span><br><span class="line"><span class="comment">##################################################3</span></span><br><span class="line">w1 = tf.Variable(tf.constant(<span class="number">1.0</span>), name=<span class="string">'w1'</span>)</span><br><span class="line">w2 = tf.Variable(tf.constant(<span class="number">2.0</span>), name=<span class="string">'w2'</span>)</span><br><span class="line">tf.add_to_collection(<span class="string">'vars'</span>, w1)</span><br><span class="line">tf.add_to_collection(<span class="string">'vars'</span>, w2)</span><br><span class="line">saver = tf.train.Saver()</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> tf.Session() <span class="keyword">as</span> sess:</span><br><span class="line">    sess.run(tf.global_variables_initializer())</span><br><span class="line">    w1 = tf.add(w1, w2)</span><br><span class="line">    saver.save(sess,<span class="string">'./my-model'</span>)</span><br></pre></td></tr></table></figure>
+<h4 id="以上代码生成了3个文件"><a href="#以上代码生成了3个文件" class="headerlink" title="以上代码生成了3个文件"></a>以上代码生成了3个文件</h4><ul>
+<li>1.my-model.ckpt.data-00000-of-00001</li>
+<li>2.my-model.ckpt.index</li>
+<li>3.my-model.ckpt.meta</li>
+</ul>
+<h3 id="2-模型加载"><a href="#2-模型加载" class="headerlink" title="2.模型加载"></a>2.模型加载</h3><figure class="highlight python"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">with</span> tf.Session() <span class="keyword">as</span> sess:</span><br><span class="line">    saver = tf.train.Saver()</span><br><span class="line">    saver.restore(sess, <span class="string">"./my-model.ckpt"</span>)</span><br></pre></td></tr></table></figure>
+<p><strong>尽管以上代码中指定的文件名字并没有声明，但是通过saver还是可以自动加载出模型的。</strong></p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/18/9 -linux运维/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="博主">
+      <meta itemprop="description" content="This is description">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="mengban">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/09/18/9 -linux运维/" itemprop="url">
+                  Ubuntu系统磁盘相关命令
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建于：2018-09-18 19:58:00" itemprop="dateCreated datePublished" datetime="2018-09-18T19:58:00+08:00">2018-09-18</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="更新于：2018-09-29 15:25:55" itemprop="dateModified" datetime="2018-09-29T15:25:55+08:00">2018-09-29</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/linux/" itemprop="url" rel="index"><span itemprop="name">linux</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Symbols count in article：</span>
+                
+                <span title="Symbols count in article">253</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">1 mins.</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="1-swap分区大小"><a href="#1-swap分区大小" class="headerlink" title="1.swap分区大小."></a>1.swap分区大小.</h3><ul>
+<li>内核空间交换区分利用参数查看命令<figure class="highlight bash"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat /proc/sys/vm/swappiness</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>cat /proc/sys/vm/swappiness</p>
+<h3 id="2-调整分区大小"><a href="#2-调整分区大小" class="headerlink" title="2.调整分区大小."></a>2.调整分区大小.</h3><p>通过gparted 软件</p>
+<h3 id="3-查看磁盘命令"><a href="#3-查看磁盘命令" class="headerlink" title="3.查看磁盘命令."></a>3.查看磁盘命令.</h3><figure class="highlight bash"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df -hl</span><br></pre></td></tr></table></figure>
+<h3 id="4-显示隐藏文件"><a href="#4-显示隐藏文件" class="headerlink" title="4.显示隐藏文件"></a>4.显示隐藏文件</h3><figure class="highlight bash"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ctrl+h</span><br></pre></td></tr></table></figure>
+<h3 id="5-adduser-useradd"><a href="#5-adduser-useradd" class="headerlink" title="5.adduser useradd"></a>5.adduser useradd</h3><p>adduser 会自动创建用户目录。</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/12/8 -shell知识/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -612,7 +1025,7 @@
                 
                   <span class="post-meta-item-text">Symbols count in article：</span>
                 
-                <span title="Symbols count in article">4.4k</span>
+                <span title="Symbols count in article">5.3k</span>
               
 
               
@@ -626,7 +1039,7 @@
                 
                   <span class="post-meta-item-text">Reading time &asymp;</span>
                 
-                <span title="Reading time">8 mins.</span>
+                <span title="Reading time">10 mins.</span>
               
             </div>
           
@@ -713,6 +1126,15 @@
 </blockquote>
 <h3 id="15"><a href="#15" class="headerlink" title="15."></a>15.</h3><blockquote>
 <p>sys.argv是传递给python脚本的命令行参数【字符串】列表<br>argv[0]为该脚本自身路径，其余为命令行参数。<br>和shell脚本的 $0 $1 $2 $3 $4一样。</p>
+</blockquote>
+<h3 id="16-zip-函数"><a href="#16-zip-函数" class="headerlink" title="16.zip 函数"></a>16.zip 函数</h3><blockquote>
+<p>zip()函数用于将可迭代的对象(如list dict )作为参数，将对象中对应元素进行打包成一个个元组，然后返回由这些元组组成的对象。<strong>返回组成的对象节省了内存</strong>可以使用list()俩将输出对象那个转换为列表.如果各个迭代器元素个数不一样 则返回列表长度于最短对象相同。zip(*zipped) 解压缩。<br><figure class="highlight python"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">zipped =  zip([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>],[<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>])</span><br><span class="line">zipped</span><br><span class="line"><span class="comment">#&lt;zip at 0x16fd026dbc8&gt;</span></span><br><span class="line">list(zipped)</span><br><span class="line">[(<span class="number">1</span>, <span class="number">4</span>), (<span class="number">2</span>, <span class="number">5</span>), (<span class="number">3</span>, <span class="number">6</span>)]</span><br><span class="line"></span><br><span class="line">a,b = zip(*zipped) <span class="comment">#error 了 很奇怪</span></span><br><span class="line"></span><br><span class="line">zipped =  zip([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>],[<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>]) <span class="comment">##这样就可以 很奇怪</span></span><br><span class="line">a,b = zip(*zipped)</span><br><span class="line">a</span><br><span class="line">(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>)</span><br><span class="line">b</span><br><span class="line">(<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>)</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<h3 id="17-join-函数"><a href="#17-join-函数" class="headerlink" title="17 .join()函数"></a>17 .join()函数</h3><blockquote>
+<p>用于将<strong>序列中的元素</strong>以指定的字符连接生成一个<strong>新的字符串</strong>。参数可以是元组 列表 字典 字符串。<br>语法：str.join(sequence)<br><figure class="highlight python"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">a = [<span class="string">'1'</span>,<span class="string">'2'</span>,<span class="string">'3'</span>]</span><br><span class="line">st = <span class="string">''</span>.join(a)</span><br><span class="line"><span class="comment">#'123'</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#对于字典类型 只会将key进行连接</span></span><br><span class="line">seq = &#123;<span class="string">'hello'</span>:<span class="string">'nihao'</span>,<span class="string">'good'</span>:<span class="number">2</span>,<span class="string">'boy'</span>:<span class="number">3</span>,<span class="string">'doiido'</span>:<span class="number">4</span>&#125;</span><br><span class="line">print(<span class="string">'-'</span>.join(seq))</span><br><span class="line"><span class="comment"># hello-good-boy-doiido</span></span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<h3 id="18-可迭代对象。"><a href="#18-可迭代对象。" class="headerlink" title="18 可迭代对象。"></a>18 可迭代对象。</h3><blockquote>
+<p>可以直接作用于for循环的数据类型有以下几种：<br>一类是集合数据类型，如list、tuple、dict、set、str等；<br>一类是generator，包括生成器和带yield的generator function。<br>这些可以直接作用于for循环的对象统称为可迭代对象：Iterable。<br>可以使用isinstance()判断一个对象是否是Iterable对象：</p>
 </blockquote>
 
           
@@ -2110,7 +2532,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">18</span>
+                    <span class="site-state-item-count">20</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -2143,7 +2565,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">10</span>
+                      
+                    
+                    <span class="site-state-item-count">11</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -2194,7 +2618,11 @@
                     
                       
                     
-                    <span class="site-state-item-count">19</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">21</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -2258,7 +2686,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="Symbols count total">16k</span>
+    <span title="Symbols count total">17k</span>
   
 
   
@@ -2267,7 +2695,7 @@
       <i class="fa fa-coffee"></i>
     </span>
     
-    <span title="Reading time total">28 mins.</span>
+    <span title="Reading time total">30 mins.</span>
   
 </div>
 
