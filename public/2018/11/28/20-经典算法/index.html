@@ -108,18 +108,18 @@
 
 
 
-  <meta name="description" content="1.全排列">
+  <meta name="description" content="1.全排列 1 字典序法  字典序法主要用来求下一个方便。如果要完全遍历 字典序法并不是比较好的选择。时间还是比较复杂的,需要比较n!次字典序法的主要步骤为：   对于序列A 从右至左 找出第一个左边大于右边的数字。并记下其位置i.    继续对该序列 从右至左 找出第一个比A[i] 大的数字 记下其位置j(要保证j&amp;gt;i). 由于A[i]右侧的数字是递增的。在A[i]的右边的数字中，找出所有">
 <meta name="keywords" content="算法,interview">
 <meta property="og:type" content="article">
 <meta property="og:title" content="面试经典算法">
 <meta property="og:url" content="http://yoursite.com/2018/11/28/20-经典算法/index.html">
 <meta property="og:site_name" content="mengban">
-<meta property="og:description" content="1.全排列">
+<meta property="og:description" content="1.全排列 1 字典序法  字典序法主要用来求下一个方便。如果要完全遍历 字典序法并不是比较好的选择。时间还是比较复杂的,需要比较n!次字典序法的主要步骤为：   对于序列A 从右至左 找出第一个左边大于右边的数字。并记下其位置i.    继续对该序列 从右至左 找出第一个比A[i] 大的数字 记下其位置j(要保证j&amp;gt;i). 由于A[i]右侧的数字是递增的。在A[i]的右边的数字中，找出所有">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2018-11-28T01:22:00.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="面试经典算法">
-<meta name="twitter:description" content="1.全排列">
+<meta name="twitter:description" content="1.全排列 1 字典序法  字典序法主要用来求下一个方便。如果要完全遍历 字典序法并不是比较好的选择。时间还是比较复杂的,需要比较n!次字典序法的主要步骤为：   对于序列A 从右至左 找出第一个左边大于右边的数字。并记下其位置i.    继续对该序列 从右至左 找出第一个比A[i] 大的数字 记下其位置j(要保证j&amp;gt;i). 由于A[i]右侧的数字是递增的。在A[i]的右边的数字中，找出所有">
 
 
 
@@ -390,7 +390,7 @@
                 
                   <span class="post-meta-item-text">Symbols count in article：</span>
                 
-                <span title="Symbols count in article">5</span>
+                <span title="Symbols count in article">776</span>
               
 
               
@@ -424,7 +424,58 @@
       
 
       
-        <h3 id="1-全排列"><a href="#1-全排列" class="headerlink" title="1.全排列"></a>1.全排列</h3>
+        <h3 id="1-全排列"><a href="#1-全排列" class="headerlink" title="1.全排列"></a>1.全排列</h3><ul>
+<li><p>1 字典序法</p>
+<blockquote>
+<p>字典序法主要用来求下一个方便。如果要完全遍历 字典序法并不是比较好的选择。时间还是比较复杂的,需要比较<strong>n!</strong>次<br>字典序法的主要步骤为：</p>
+<ul>
+<li><ol>
+<li>对于序列A 从右至左 找出<strong>第一个左边大于右边</strong>的数字。并记下其位置i.</li>
+</ol>
+</li>
+<li><ol start="2">
+<li>继续对该序列 从右至左 找出第一个比A[i] 大的数字 记下其位置j(要保证j&gt;i). 由于A[i]右侧的数字是递增的。在A[i]的右边的数字中，找出所有比A[i]大的数中最小的数字A[j]，即 j=max{i|pj&gt;pi}（右边的数从右至左是递增的，因此j是所有大于A[i]的数字中序号最大者）</li>
+</ol>
+</li>
+<li><ol start="3">
+<li>交换 A序列 i j 位置的值即A[i] 和 A[j]的值.</li>
+</ol>
+</li>
+<li><ol start="4">
+<li>反转序列 A[i+1]A[i+2]…A[j]</li>
+</ol>
+</li>
+<li><ol start="5">
+<li>反转之后的序列即为当前排列的下一排列。</li>
+</ol>
+</li>
+</ul>
+</blockquote>
+</li>
+<li><ol start="2">
+<li>递归求解。主要思想是动态规划：即当前任务的完成是在上一个任务的基础上的。对已N个数 每个数轮流做开头 我们只需对剩余N-1个数的全排列即可，把第N个数放在N-1个数的全排列的开头就构成了N个数的全排列。这个明显的缺点就是有<strong>重复</strong>问题。</li>
+</ol>
+<ul>
+<li><ol>
+<li>解决重复问题的方法：<strong>避免重复的数字做开头就好啦。递归操作时也是如此。</strong>保证的重复元素避免多次排列。</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="2-组合"><a href="#2-组合" class="headerlink" title="2.组合."></a>2.组合.</h3><p>对于数组[1,2,3,4,5,6],求任意3个数的组合。</p>
+<ul>
+<li><ol>
+<li>同样可以使用递归的思路。对于没有重复元素的数组 对于第一个数选择要或者不要。如果要就从剩余的数中选择出2个数(递归问题)。如果不要 就从剩余的数中选出3个数(递归问题)。</li>
+</ol>
+</li>
+<li><ol start="2">
+<li>关于去重：去重的话只要判断在第i个位置是否已经出现过某数字 有的话 跳过.比如对 1 2 2 选两个数字进行排列.已经有了 [1 2] 时 第二个 [1] + [2]就直接跳过。</li>
+</ol>
+<p>相关问题汇总于<a href="http://www.cnblogs.com/TenosDoIt/p/3695472.html" target="_blank" rel="noopener">C++版排列组合问题全解</a></p>
+</li>
+</ul>
+
       
     </div>
 
@@ -475,6 +526,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/12/10/21_TCPUDP/" rel="prev" title="TCP/UDP 共占同一端口">
+                TCP/UDP 共占同一端口 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -544,7 +599,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">20</span>
+                    <span class="site-state-item-count">21</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -579,7 +634,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">11</span>
+                      
+                    
+                    <span class="site-state-item-count">12</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -634,7 +691,11 @@
                     
                       
                     
-                    <span class="site-state-item-count">21</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">23</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -679,7 +740,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-全排列"><span class="nav-number">1.</span> <span class="nav-text">1.全排列</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-全排列"><span class="nav-number">1.</span> <span class="nav-text">1.全排列</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-组合"><span class="nav-number">2.</span> <span class="nav-text">2.组合.</span></a></li></ol></div>
             
 
           </div>
@@ -714,7 +775,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="Symbols count total">17k</span>
+    <span title="Symbols count total">19k</span>
   
 
   
@@ -723,7 +784,7 @@
       <i class="fa fa-coffee"></i>
     </span>
     
-    <span title="Reading time total">30 mins.</span>
+    <span title="Reading time total">35 mins.</span>
   
 </div>
 

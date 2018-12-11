@@ -116,7 +116,7 @@
 <meta property="og:site_name" content="mengban">
 <meta property="og:description" content="1.swap分区大小. 内核空间交换区分利用参数查看命令&amp;#123;.line-numbers&amp;#125;1cat /proc/sys/vm/swappiness   cat /proc/sys/vm/swappiness 2.调整分区大小.通过gparted 软件 3.查看磁盘命令.&amp;#123;.line-numbers&amp;#125;1df -hl 4.显示隐藏文件&amp;#123;.line-numb">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-09-29T07:25:55.354Z">
+<meta property="og:updated_time" content="2018-12-05T02:26:52.370Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Ubuntu系统磁盘相关命令">
 <meta name="twitter:description" content="1.swap分区大小. 内核空间交换区分利用参数查看命令&amp;#123;.line-numbers&amp;#125;1cat /proc/sys/vm/swappiness   cat /proc/sys/vm/swappiness 2.调整分区大小.通过gparted 软件 3.查看磁盘命令.&amp;#123;.line-numbers&amp;#125;1df -hl 4.显示隐藏文件&amp;#123;.line-numb">
@@ -361,7 +361,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="更新于：2018-09-29 15:25:55" itemprop="dateModified" datetime="2018-09-29T15:25:55+08:00">2018-09-29</time>
+                <time title="更新于：2018-12-05 10:26:52" itemprop="dateModified" datetime="2018-12-05T10:26:52+08:00">2018-12-05</time>
               
             
           </span>
@@ -406,7 +406,7 @@
                 
                   <span class="post-meta-item-text">Symbols count in article：</span>
                 
-                <span title="Symbols count in article">253</span>
+                <span title="Symbols count in article">464</span>
               
 
               
@@ -449,6 +449,9 @@
 <h3 id="3-查看磁盘命令"><a href="#3-查看磁盘命令" class="headerlink" title="3.查看磁盘命令."></a>3.查看磁盘命令.</h3><figure class="highlight bash"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df -hl</span><br></pre></td></tr></table></figure>
 <h3 id="4-显示隐藏文件"><a href="#4-显示隐藏文件" class="headerlink" title="4.显示隐藏文件"></a>4.显示隐藏文件</h3><figure class="highlight bash"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ctrl+h</span><br></pre></td></tr></table></figure>
 <h3 id="5-adduser-useradd"><a href="#5-adduser-useradd" class="headerlink" title="5.adduser useradd"></a>5.adduser useradd</h3><p>adduser 会自动创建用户目录。</p>
+<h3 id="6-fork-函数"><a href="#6-fork-函数" class="headerlink" title="6.fork()函数"></a>6.fork()函数</h3><blockquote>
+<p>只需记住一点:fork()函数调用一次返回两次。<br>在父进程中 根据返回值(子进程PID)继续执行<br>在子进程中 根据返回值(0) 再继续执行。<br>如下例子  根据短路原则 main作为父进程 会创建子进程1 子进程1创建子进程2。<br>子进程保存了父进程前的代码状态 并直接运行。<br><figure class="highlight c"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">fork()||fork();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+</blockquote>
 
       
     </div>
@@ -491,8 +494,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/09/12/8 -shell知识/" rel="next" title="shell 变量含义">
-                <i class="fa fa-chevron-left"></i> shell 变量含义
+              <a href="/2018/09/18/11-tensorflow保存模型/" rel="next" title="tensorflow 模型保存">
+                <i class="fa fa-chevron-left"></i> tensorflow 模型保存
               </a>
             
           </div>
@@ -501,8 +504,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/09/18/11-tensorflow保存模型/" rel="prev" title="tensorflow 模型保存">
-                tensorflow 模型保存 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/09/29/10-CDH5.14部署Ubuntu16.04/" rel="prev" title="Ubuntu16.04 + CDH5.14 + saprk2 踩坑实录">
+                Ubuntu16.04 + CDH5.14 + saprk2 踩坑实录 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -573,7 +576,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">20</span>
+                    <span class="site-state-item-count">21</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -608,7 +611,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">11</span>
+                      
+                    
+                    <span class="site-state-item-count">12</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -663,7 +668,11 @@
                     
                       
                     
-                    <span class="site-state-item-count">21</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">23</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -708,7 +717,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-swap分区大小"><span class="nav-number">1.</span> <span class="nav-text">1.swap分区大小.</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-调整分区大小"><span class="nav-number">2.</span> <span class="nav-text">2.调整分区大小.</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-查看磁盘命令"><span class="nav-number">3.</span> <span class="nav-text">3.查看磁盘命令.</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-显示隐藏文件"><span class="nav-number">4.</span> <span class="nav-text">4.显示隐藏文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-adduser-useradd"><span class="nav-number">5.</span> <span class="nav-text">5.adduser useradd</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-swap分区大小"><span class="nav-number">1.</span> <span class="nav-text">1.swap分区大小.</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-调整分区大小"><span class="nav-number">2.</span> <span class="nav-text">2.调整分区大小.</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-查看磁盘命令"><span class="nav-number">3.</span> <span class="nav-text">3.查看磁盘命令.</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-显示隐藏文件"><span class="nav-number">4.</span> <span class="nav-text">4.显示隐藏文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-adduser-useradd"><span class="nav-number">5.</span> <span class="nav-text">5.adduser useradd</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-fork-函数"><span class="nav-number">6.</span> <span class="nav-text">6.fork()函数</span></a></li></ol></div>
             
 
           </div>
@@ -743,7 +752,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="Symbols count total">17k</span>
+    <span title="Symbols count total">19k</span>
   
 
   
@@ -752,7 +761,7 @@
       <i class="fa fa-coffee"></i>
     </span>
     
-    <span title="Reading time total">30 mins.</span>
+    <span title="Reading time total">35 mins.</span>
   
 </div>
 

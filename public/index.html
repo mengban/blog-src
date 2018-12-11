@@ -301,6 +301,198 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/10/21_TCPUDP/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="博主">
+      <meta itemprop="description" content="This is description">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="mengban">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/12/10/21_TCPUDP/" itemprop="url">
+                  TCP/UDP 共占同一端口
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建于：2018-12-10 09:50:00" itemprop="dateCreated datePublished" datetime="2018-12-10T09:50:00+08:00">2018-12-10</time>
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/计算机网络/" itemprop="url" rel="index"><span itemprop="name">计算机网络</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Symbols count in article：</span>
+                
+                <span title="Symbols count in article">1.4k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">2 mins.</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="TCP-UDP-共用端口问题。"><a href="#TCP-UDP-共用端口问题。" class="headerlink" title="TCP/UDP 共用端口问题。"></a>TCP/UDP 共用端口问题。</h2><h3 id="1-TCP-UDP-可以共同占用一个端口号吗"><a href="#1-TCP-UDP-可以共同占用一个端口号吗" class="headerlink" title="1.TCP UDP 可以共同占用一个端口号吗?"></a>1.TCP UDP 可以共同占用一个端口号吗?</h3><blockquote>
+<p>首先明确一点 端口是一种抽象的软件结构（包括一些数据结构和I/O缓冲区）。<br>应用程序（即进程）通过系统调用与某端口建立连接（binding）后，传输层传给该端口的数据都被相应进程所接收，相应进程发给传输层的数据都通过该端口输出。在TCP/IP协议的实现中，端口操作类似于一般的I/O操作，进程获取一个端口，相当于获取本地唯一的I/O文件，可以用一般的读写原语访问之。<br>类似于文件描述符，每个端口都拥有一个叫端口号（port   number）的整数型标识符，用于区别不同端口。由于TCP/IP传输层的两个协议TCP和UDP是完全独立的两个软件模块，因此各自的端口号也相互独立，如TCP有一个255号端口，UDP也可以有一个255号端口，二者并不冲突。 </p>
+</blockquote>
+<h3 id="2-为什么一个80端口可以建立很多连接"><a href="#2-为什么一个80端口可以建立很多连接" class="headerlink" title="2.为什么一个80端口可以建立很多连接?"></a>2.为什么一个80端口可以建立很多连接?</h3><p>一个TCP连接需要由四元组来形成，即(src_ip,src_port,dst_ip,dst_port)。假设有客户端建立了连接(src_ip1,src_port1,dst_ip1,dst_port1)，那么，如果我们还有listen在(src_ip1,src_port1)，那么当(dst_ip1,dst_port1)发送消息过来，系统应该把消息给谁？所以就说明了客户端占用了某一端口时，该端口就不能被其它进程listen了。</p>
+<p>那么，对于有些童鞋，可能还有这样的疑问，是否一台机器就只能建立65535个连接了（端口16位限制）？非也，一个连接由四元组(src_ip,src_port,dst_ip,dst_port)形式，那么当(src_ip,src_port)一定时，变化的(dst_ip,dst_port)就可以建立更多连接了。<br>所以一台机器可以建立<strong>最多65535个连接是大错特错的</strong>。所有的一切都可以用四元组原理来分析即：<strong>一个TCP连接需要由四元组来形成，即(src_ip,src_port,dst_ip,dst_port),只要四个元素的组合中有一个元素不一样，那就可以区别不同的连接</strong>。</p>
+<h3 id="3-承接2问-为什么还会出现端口被占的情况？？"><a href="#3-承接2问-为什么还会出现端口被占的情况？？" class="headerlink" title="3.承接2问 为什么还会出现端口被占的情况？？"></a>3.承接2问 为什么还会出现端口被占的情况？？</h3><p>这个问题问的好。默认情况下 一个网络应用程序的套接字绑定了一个端口 这时候别的套接字就无法使用这个端口。这个就是为什么我们实际应用过程中经常会出现 端口已经被使用的情况。</p>
+<p>但是 在实际网络编程过程中，socket有一个 SO_REUSEADDR 选项。该选项可以用在以下四种情况下。 (摘自《Unix网络编程》卷一，即UNPv1)</p>
+<blockquote>
+<p>1、当有一个有相同本地地址和端口的socket1处于TIME_WAIT状态时，而你启动的程序的socket2要占用该地址和端口，你的程序就要用到该选项。<br>2、SO_REUSEADDR允许同一port上启动同一服务器的多个实例(多个进程)。但每个实例绑定的IP地址是不能相同的。在有多块网卡或用IP Alias技术的机器可以测试这种情况。<br>3、SO_REUSEADDR允许单个进程绑定相同的端口到多个socket上，但每个socket绑定的ip地址不同。这和2很相似，区别请看UNPv1。<br>4、SO_REUSEADDR允许完全相同的地址和端口的重复绑定。但这只用于UDP的多播，不用于TCP。</p>
+</blockquote>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/28/20-经典算法/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -393,7 +585,7 @@
                 
                   <span class="post-meta-item-text">Symbols count in article：</span>
                 
-                <span title="Symbols count in article">5</span>
+                <span title="Symbols count in article">776</span>
               
 
               
@@ -429,7 +621,58 @@
       
         
           
-            <h3 id="1-全排列"><a href="#1-全排列" class="headerlink" title="1.全排列"></a>1.全排列</h3>
+            <h3 id="1-全排列"><a href="#1-全排列" class="headerlink" title="1.全排列"></a>1.全排列</h3><ul>
+<li><p>1 字典序法</p>
+<blockquote>
+<p>字典序法主要用来求下一个方便。如果要完全遍历 字典序法并不是比较好的选择。时间还是比较复杂的,需要比较<strong>n!</strong>次<br>字典序法的主要步骤为：</p>
+<ul>
+<li><ol>
+<li>对于序列A 从右至左 找出<strong>第一个左边大于右边</strong>的数字。并记下其位置i.</li>
+</ol>
+</li>
+<li><ol start="2">
+<li>继续对该序列 从右至左 找出第一个比A[i] 大的数字 记下其位置j(要保证j&gt;i). 由于A[i]右侧的数字是递增的。在A[i]的右边的数字中，找出所有比A[i]大的数中最小的数字A[j]，即 j=max{i|pj&gt;pi}（右边的数从右至左是递增的，因此j是所有大于A[i]的数字中序号最大者）</li>
+</ol>
+</li>
+<li><ol start="3">
+<li>交换 A序列 i j 位置的值即A[i] 和 A[j]的值.</li>
+</ol>
+</li>
+<li><ol start="4">
+<li>反转序列 A[i+1]A[i+2]…A[j]</li>
+</ol>
+</li>
+<li><ol start="5">
+<li>反转之后的序列即为当前排列的下一排列。</li>
+</ol>
+</li>
+</ul>
+</blockquote>
+</li>
+<li><ol start="2">
+<li>递归求解。主要思想是动态规划：即当前任务的完成是在上一个任务的基础上的。对已N个数 每个数轮流做开头 我们只需对剩余N-1个数的全排列即可，把第N个数放在N-1个数的全排列的开头就构成了N个数的全排列。这个明显的缺点就是有<strong>重复</strong>问题。</li>
+</ol>
+<ul>
+<li><ol>
+<li>解决重复问题的方法：<strong>避免重复的数字做开头就好啦。递归操作时也是如此。</strong>保证的重复元素避免多次排列。</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="2-组合"><a href="#2-组合" class="headerlink" title="2.组合."></a>2.组合.</h3><p>对于数组[1,2,3,4,5,6],求任意3个数的组合。</p>
+<ul>
+<li><ol>
+<li>同样可以使用递归的思路。对于没有重复元素的数组 对于第一个数选择要或者不要。如果要就从剩余的数中选择出2个数(递归问题)。如果不要 就从剩余的数中选出3个数(递归问题)。</li>
+</ol>
+</li>
+<li><ol start="2">
+<li>关于去重：去重的话只要判断在第i个位置是否已经出现过某数字 有的话 跳过.比如对 1 2 2 选两个数字进行排列.已经有了 [1 2] 时 第二个 [1] + [2]就直接跳过。</li>
+</ol>
+<p>相关问题汇总于<a href="http://www.cnblogs.com/TenosDoIt/p/3695472.html" target="_blank" rel="noopener">C++版排列组合问题全解</a></p>
+</li>
+</ul>
+
           
         
       
@@ -2108,226 +2351,11 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/29/10-CDH5.14部署Ubuntu16.04/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="博主">
-      <meta itemprop="description" content="This is description">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="mengban">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/09/29/10-CDH5.14部署Ubuntu16.04/" itemprop="url">
-                  Ubuntu16.04 + CDH5.14 + saprk2 踩坑实录
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建于：2018-09-29 15:16:00 / 更新于：15:17:58" itemprop="dateCreated datePublished" datetime="2018-09-29T15:16:00+08:00">2018-09-29</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/大数据/" itemprop="url" rel="index"><span itemprop="name">大数据</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-symbolscount">
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Symbols count in article：</span>
-                
-                <span title="Symbols count in article">721</span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Reading time &asymp;</span>
-                
-                <span title="Reading time">1 mins.</span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="1-配置Java环境。"><a href="#1-配置Java环境。" class="headerlink" title="1.配置Java环境。"></a>1.配置Java环境。</h3><h3 id="2-修改主机hosts。"><a href="#2-修改主机hosts。" class="headerlink" title="2.修改主机hosts。"></a>2.修改主机hosts。</h3><h3 id="3-免密登陆。"><a href="#3-免密登陆。" class="headerlink" title="3.免密登陆。"></a>3.免密登陆。</h3><h3 id="4-下载安装包"><a href="#4-下载安装包" class="headerlink" title="4.下载安装包."></a>4.下载安装包.</h3><h3 id="5-坑"><a href="#5-坑" class="headerlink" title="5.坑."></a>5.坑.</h3><ul>
-<li><ol>
-<li>JAVA_HOME.即使设置的很对还是报错。 改链接。 <a href="http://www.aboutyun.com/thread-23764-1-1.html" target="_blank" rel="noopener">http://www.aboutyun.com/thread-23764-1-1.html</a><br>mkdir –p /usr/java<br>ln -s /usr/lib/jdk/jdk1.8.0_181  /usr/java/default</li>
-</ol>
-</li>
-<li><ol start="2">
-<li>hue数据库访问。 python的锅。需要装东西 <a href="https://stackoverflow.com/questions/5178292/pip-install-mysql-python-fails-with-environmenterror-mysql-config-not-found" target="_blank" rel="noopener">https://stackoverflow.com/questions/5178292/pip-install-mysql-python-fails-with-environmenterror-mysql-config-not-found</a><br>apt install python-dev<br>apt install python-mysqldb</li>
-</ol>
-</li>
-<li><ol start="3">
-<li>创建失败 no user cloudera-scm。新开用户。 </li>
-</ol>
-</li>
-<li><ol start="4">
-<li>ACL问题<br>改ACL</li>
-</ol>
-</li>
-<li><ol start="5">
-<li>permissions 问题<br>hdfs 用户修改所有权限777</li>
-</ol>
-</li>
-<li><ol start="6">
-<li>spark2<br>安装最新版本即可。<ul>
-<li>java 包错误。Error: A JNI error has occurred, please check your installation and try again<br>Exception in thread “main” java.lang.NoClassDefFoundError: org/slf4j/Logger<br>修改spark-env.sh<br><a href="https://www.jianshu.com/p/6acd6419f697" target="_blank" rel="noopener">https://www.jianshu.com/p/6acd6419f697</a></li>
-</ul>
-</li>
-</ol>
-</li>
-</ul>
-<h3 id="总结：多google-多看官方文档"><a href="#总结：多google-多看官方文档" class="headerlink" title="总结：多google 多看官方文档."></a>总结：多google 多看官方文档.</h3>
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
   </nav>
 
 
@@ -2370,7 +2398,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">20</span>
+                    <span class="site-state-item-count">21</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -2405,7 +2433,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">11</span>
+                      
+                    
+                    <span class="site-state-item-count">12</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -2460,7 +2490,11 @@
                     
                       
                     
-                    <span class="site-state-item-count">21</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">23</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -2524,7 +2558,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="Symbols count total">17k</span>
+    <span title="Symbols count total">19k</span>
   
 
   
@@ -2533,7 +2567,7 @@
       <i class="fa fa-coffee"></i>
     </span>
     
-    <span title="Reading time total">30 mins.</span>
+    <span title="Reading time total">35 mins.</span>
   
 </div>
 
