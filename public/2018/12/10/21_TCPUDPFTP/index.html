@@ -108,25 +108,25 @@
 
 
 
-  <meta name="description" content="1.全排列 1 字典序法  字典序法主要用来求下一个方便。如果要完全遍历 字典序法并不是比较好的选择。时间还是比较复杂的,需要比较n!次字典序法的主要步骤为：   对于序列A 从右至左 找出第一个左边大于右边的数字。并记下其位置i.    继续对该序列 从右至左 找出第一个比A[i] 大的数字 记下其位置j(要保证j&amp;gt;i). 由于A[i]右侧的数字是递增的。在A[i]的右边的数字中，找出所有">
-<meta name="keywords" content="算法,interview">
+  <meta name="description" content="TCP/UDP 共用端口问题。1.TCP UDP 可以共同占用一个端口号吗? 首先明确一点 端口是一种抽象的软件结构（包括一些数据结构和I/O缓冲区）。应用程序（即进程）通过系统调用与某端口建立连接（binding）后，传输层传给该端口的数据都被相应进程所接收，相应进程发给传输层的数据都通过该端口输出。在TCP/IP协议的实现中，端口操作类似于一般的I/O操作，进程获取一个端口，相当于获取本地唯一">
+<meta name="keywords" content="端口,TCP&#x2F;UDP">
 <meta property="og:type" content="article">
-<meta property="og:title" content="面试经典算法">
-<meta property="og:url" content="http://yoursite.com/2018/11/28/20-经典算法/index.html">
+<meta property="og:title" content="TCP&#x2F;UDP 共占同一端口">
+<meta property="og:url" content="http://yoursite.com/2018/12/10/21_TCPUDPFTP/index.html">
 <meta property="og:site_name" content="mengban">
-<meta property="og:description" content="1.全排列 1 字典序法  字典序法主要用来求下一个方便。如果要完全遍历 字典序法并不是比较好的选择。时间还是比较复杂的,需要比较n!次字典序法的主要步骤为：   对于序列A 从右至左 找出第一个左边大于右边的数字。并记下其位置i.    继续对该序列 从右至左 找出第一个比A[i] 大的数字 记下其位置j(要保证j&amp;gt;i). 由于A[i]右侧的数字是递增的。在A[i]的右边的数字中，找出所有">
+<meta property="og:description" content="TCP/UDP 共用端口问题。1.TCP UDP 可以共同占用一个端口号吗? 首先明确一点 端口是一种抽象的软件结构（包括一些数据结构和I/O缓冲区）。应用程序（即进程）通过系统调用与某端口建立连接（binding）后，传输层传给该端口的数据都被相应进程所接收，相应进程发给传输层的数据都通过该端口输出。在TCP/IP协议的实现中，端口操作类似于一般的I/O操作，进程获取一个端口，相当于获取本地唯一">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-11-28T01:22:00.000Z">
+<meta property="og:updated_time" content="2018-12-10T01:50:00.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="面试经典算法">
-<meta name="twitter:description" content="1.全排列 1 字典序法  字典序法主要用来求下一个方便。如果要完全遍历 字典序法并不是比较好的选择。时间还是比较复杂的,需要比较n!次字典序法的主要步骤为：   对于序列A 从右至左 找出第一个左边大于右边的数字。并记下其位置i.    继续对该序列 从右至左 找出第一个比A[i] 大的数字 记下其位置j(要保证j&amp;gt;i). 由于A[i]右侧的数字是递增的。在A[i]的右边的数字中，找出所有">
+<meta name="twitter:title" content="TCP&#x2F;UDP 共占同一端口">
+<meta name="twitter:description" content="TCP/UDP 共用端口问题。1.TCP UDP 可以共同占用一个端口号吗? 首先明确一点 端口是一种抽象的软件结构（包括一些数据结构和I/O缓冲区）。应用程序（即进程）通过系统调用与某端口建立连接（binding）后，传输层传给该端口的数据都被相应进程所接收，相应进程发给传输层的数据都通过该端口输出。在TCP/IP协议的实现中，端口操作类似于一般的I/O操作，进程获取一个端口，相当于获取本地唯一">
 
 
 
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/11/28/20-经典算法/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/12/10/21_TCPUDPFTP/"/>
 
 
 
@@ -136,7 +136,7 @@
   };
 </script>
 
-  <title>面试经典算法 | mengban</title>
+  <title>TCP/UDP 共占同一端口 | mengban</title>
   
 
 
@@ -302,7 +302,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/28/20-经典算法/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/10/21_TCPUDPFTP/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="博主">
@@ -319,7 +319,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">面试经典算法
+          <h1 class="post-title" itemprop="name headline">TCP/UDP 共占同一端口
               
             
           </h1>
@@ -344,7 +344,7 @@
                 
               
 
-              <time title="创建于：2018-11-28 09:22:00" itemprop="dateCreated datePublished" datetime="2018-11-28T09:22:00+08:00">2018-11-28</time>
+              <time title="创建于：2018-12-10 09:50:00" itemprop="dateCreated datePublished" datetime="2018-12-10T09:50:00+08:00">2018-12-10</time>
             
 
             
@@ -362,7 +362,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/算法/" itemprop="url" rel="index"><span itemprop="name">算法</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/计算机网络/" itemprop="url" rel="index"><span itemprop="name">计算机网络</span></a></span>
 
                 
                 
@@ -390,7 +390,7 @@
                 
                   <span class="post-meta-item-text">Symbols count in article：</span>
                 
-                <span title="Symbols count in article">776</span>
+                <span title="Symbols count in article">1.7k</span>
               
 
               
@@ -404,7 +404,7 @@
                 
                   <span class="post-meta-item-text">Reading time &asymp;</span>
                 
-                <span title="Reading time">1 mins.</span>
+                <span title="Reading time">3 mins.</span>
               
             </div>
           
@@ -424,57 +424,19 @@
       
 
       
-        <h3 id="1-全排列"><a href="#1-全排列" class="headerlink" title="1.全排列"></a>1.全排列</h3><ul>
-<li><p>1 字典序法</p>
-<blockquote>
-<p>字典序法主要用来求下一个方便。如果要完全遍历 字典序法并不是比较好的选择。时间还是比较复杂的,需要比较<strong>n!</strong>次<br>字典序法的主要步骤为：</p>
-<ul>
-<li><ol>
-<li>对于序列A 从右至左 找出<strong>第一个左边大于右边</strong>的数字。并记下其位置i.</li>
-</ol>
-</li>
-<li><ol start="2">
-<li>继续对该序列 从右至左 找出第一个比A[i] 大的数字 记下其位置j(要保证j&gt;i). 由于A[i]右侧的数字是递增的。在A[i]的右边的数字中，找出所有比A[i]大的数中最小的数字A[j]，即 j=max{i|pj&gt;pi}（右边的数从右至左是递增的，因此j是所有大于A[i]的数字中序号最大者）</li>
-</ol>
-</li>
-<li><ol start="3">
-<li>交换 A序列 i j 位置的值即A[i] 和 A[j]的值.</li>
-</ol>
-</li>
-<li><ol start="4">
-<li>反转序列 A[i+1]A[i+2]…A[j]</li>
-</ol>
-</li>
-<li><ol start="5">
-<li>反转之后的序列即为当前排列的下一排列。</li>
-</ol>
-</li>
-</ul>
+        <h2 id="TCP-UDP-共用端口问题。"><a href="#TCP-UDP-共用端口问题。" class="headerlink" title="TCP/UDP 共用端口问题。"></a>TCP/UDP 共用端口问题。</h2><h3 id="1-TCP-UDP-可以共同占用一个端口号吗"><a href="#1-TCP-UDP-可以共同占用一个端口号吗" class="headerlink" title="1.TCP UDP 可以共同占用一个端口号吗?"></a>1.TCP UDP 可以共同占用一个端口号吗?</h3><blockquote>
+<p>首先明确一点 端口是一种抽象的软件结构（包括一些数据结构和I/O缓冲区）。<br>应用程序（即进程）通过系统调用与某端口建立连接（binding）后，传输层传给该端口的数据都被相应进程所接收，相应进程发给传输层的数据都通过该端口输出。在TCP/IP协议的实现中，端口操作类似于一般的I/O操作，进程获取一个端口，相当于获取本地唯一的I/O文件，可以用一般的读写原语访问之。<br>类似于文件描述符，每个端口都拥有一个叫端口号（port   number）的整数型标识符，用于区别不同端口。由于TCP/IP传输层的两个协议TCP和UDP是完全独立的两个软件模块，因此各自的端口号也相互独立，如TCP有一个255号端口，UDP也可以有一个255号端口，二者并不冲突。 </p>
 </blockquote>
-</li>
-<li><ol start="2">
-<li>递归求解。主要思想是动态规划：即当前任务的完成是在上一个任务的基础上的。对已N个数 每个数轮流做开头 我们只需对剩余N-1个数的全排列即可，把第N个数放在N-1个数的全排列的开头就构成了N个数的全排列。这个明显的缺点就是有<strong>重复</strong>问题。</li>
-</ol>
-<ul>
-<li><ol>
-<li>解决重复问题的方法：<strong>避免重复的数字做开头就好啦。递归操作时也是如此。</strong>保证的重复元素避免多次排列。</li>
-</ol>
-</li>
-</ul>
-</li>
-</ul>
-<h3 id="2-组合"><a href="#2-组合" class="headerlink" title="2.组合."></a>2.组合.</h3><p>对于数组[1,2,3,4,5,6],求任意3个数的组合。</p>
-<ul>
-<li><ol>
-<li>同样可以使用递归的思路。对于没有重复元素的数组 对于第一个数选择要或者不要。如果要就从剩余的数中选择出2个数(递归问题)。如果不要 就从剩余的数中选出3个数(递归问题)。</li>
-</ol>
-</li>
-<li><ol start="2">
-<li>关于去重：去重的话只要判断在第i个位置是否已经出现过某数字 有的话 跳过.比如对 1 2 2 选两个数字进行排列.已经有了 [1 2] 时 第二个 [1] + [2]就直接跳过。</li>
-</ol>
-<p>相关问题汇总于<a href="http://www.cnblogs.com/TenosDoIt/p/3695472.html" target="_blank" rel="noopener">C++版排列组合问题全解</a></p>
-</li>
-</ul>
+<h3 id="2-为什么一个80端口可以建立很多连接"><a href="#2-为什么一个80端口可以建立很多连接" class="headerlink" title="2.为什么一个80端口可以建立很多连接?"></a>2.为什么一个80端口可以建立很多连接?</h3><p>一个TCP连接需要由四元组来形成，即(src_ip,src_port,dst_ip,dst_port)。假设有客户端建立了连接(src_ip1,src_port1,dst_ip1,dst_port1)，那么，如果我们还有listen在(src_ip1,src_port1)，那么当(dst_ip1,dst_port1)发送消息过来，系统应该把消息给谁？所以就说明了客户端占用了某一端口时，该端口就不能被其它进程listen了。</p>
+<p>那么，对于有些童鞋，可能还有这样的疑问，是否一台机器就只能建立65535个连接了（端口16位限制）？非也，一个连接由四元组(src_ip,src_port,dst_ip,dst_port)形式，那么当(src_ip,src_port)一定时，变化的(dst_ip,dst_port)就可以建立更多连接了。<br>所以一台机器可以建立<strong>最多65535个连接是大错特错的</strong>。所有的一切都可以用四元组原理来分析即：<strong>一个TCP连接需要由四元组来形成，即(src_ip,src_port,dst_ip,dst_port),只要四个元素的组合中有一个元素不一样，那就可以区别不同的连接</strong>。</p>
+<h3 id="3-承接2问-为什么还会出现端口被占的情况？？"><a href="#3-承接2问-为什么还会出现端口被占的情况？？" class="headerlink" title="3.承接2问 为什么还会出现端口被占的情况？？"></a>3.承接2问 为什么还会出现端口被占的情况？？</h3><p>这个问题问的好。默认情况下 一个网络应用程序的套接字绑定了一个端口 这时候别的套接字就无法使用这个端口。这个就是为什么我们实际应用过程中经常会出现 端口已经被使用的情况。</p>
+<p>但是 在实际网络编程过程中，socket有一个 SO_REUSEADDR 选项。该选项可以用在以下四种情况下。 (摘自《Unix网络编程》卷一，即UNPv1)</p>
+<blockquote>
+<p>1、当有一个有相同本地地址和端口的socket1处于TIME_WAIT状态时，而你启动的程序的socket2要占用该地址和端口，你的程序就要用到该选项。<br>2、SO_REUSEADDR允许同一port上启动同一服务器的多个实例(多个进程)。但每个实例绑定的IP地址是不能相同的。在有多块网卡或用IP Alias技术的机器可以测试这种情况。<br>3、SO_REUSEADDR允许单个进程绑定相同的端口到多个socket上，但每个socket绑定的ip地址不同。这和2很相似，区别请看UNPv1。<br>4、SO_REUSEADDR允许完全相同的地址和端口的重复绑定。但这只用于UDP的多播，不用于TCP。</p>
+</blockquote>
+<h3 id="4-ftp端口的占用。"><a href="#4-ftp端口的占用。" class="headerlink" title="4.ftp端口的占用。"></a>4.ftp端口的占用。</h3><blockquote>
+<p>FTP服务器有两个端口，其中21端口用于连接，20端口用于传输数据.<br>进行FTP文件传输中，客户端首先连接到FTP服务器的21端口，进行用户的认证，认证成功后，要传输文件时，服务器会开一个端口为20来进行传输数据文件。<br>也就是说，端口20才是真正传输所用到的端口，端口21只用于FTP的登陆认证。我们平常下载文件时，会遇到下载到99%时，文件不完成，不能成功的下载。其实是因为文件下载完毕后，还要在21端口再行进行用户认证，而下载文件的时间如果过长，客户机与服务器的21端口的连接会被服务器认为是超时连接而中断掉，就是这个原因。解决方法就是设置21端口的响应时间。</p>
+</blockquote>
 
       
     </div>
@@ -497,13 +459,13 @@
         <!---<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">--->
           
           <!---mod by lius--->
-            <!---<a href="/tags/算法/" rel="tag"># 算法</a>--->
-            <a href="/tags/算法/" rel="tag"><i class="fa fa-tag"></i> 算法</a>
+            <!---<a href="/tags/端口/" rel="tag"># 端口</a>--->
+            <a href="/tags/端口/" rel="tag"><i class="fa fa-tag"></i> 端口</a>
           <!---mod by lius--->
           
           <!---mod by lius--->
-            <!---<a href="/tags/interview/" rel="tag"># interview</a>--->
-            <a href="/tags/interview/" rel="tag"><i class="fa fa-tag"></i> interview</a>
+            <!---<a href="/tags/TCP-UDP/" rel="tag"># TCP/UDP</a>--->
+            <a href="/tags/TCP-UDP/" rel="tag"><i class="fa fa-tag"></i> TCP/UDP</a>
           <!---mod by lius--->
           
         </div>
@@ -517,8 +479,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/11/19/19-memo/" rel="next" title="面试memo">
-                <i class="fa fa-chevron-left"></i> 面试memo
+              <a href="/2018/11/28/20-经典算法/" rel="next" title="面试经典算法">
+                <i class="fa fa-chevron-left"></i> 面试经典算法
               </a>
             
           </div>
@@ -526,10 +488,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/12/10/21_TCPUDPFTP/" rel="prev" title="TCP/UDP 共占同一端口">
-                TCP/UDP 共占同一端口 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -740,7 +698,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-全排列"><span class="nav-number">1.</span> <span class="nav-text">1.全排列</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-组合"><span class="nav-number">2.</span> <span class="nav-text">2.组合.</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#TCP-UDP-共用端口问题。"><span class="nav-number">1.</span> <span class="nav-text">TCP/UDP 共用端口问题。</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-TCP-UDP-可以共同占用一个端口号吗"><span class="nav-number">1.1.</span> <span class="nav-text">1.TCP UDP 可以共同占用一个端口号吗?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-为什么一个80端口可以建立很多连接"><span class="nav-number">1.2.</span> <span class="nav-text">2.为什么一个80端口可以建立很多连接?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-承接2问-为什么还会出现端口被占的情况？？"><span class="nav-number">1.3.</span> <span class="nav-text">3.承接2问 为什么还会出现端口被占的情况？？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-ftp端口的占用。"><span class="nav-number">1.4.</span> <span class="nav-text">4.ftp端口的占用。</span></a></li></ol></li></ol></div>
             
 
           </div>
