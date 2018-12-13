@@ -116,7 +116,7 @@
 <meta property="og:site_name" content="mengban">
 <meta property="og:description" content="1.swap分区大小. 内核空间交换区分利用参数查看命令&amp;#123;.line-numbers&amp;#125;1cat /proc/sys/vm/swappiness   cat /proc/sys/vm/swappiness 2.调整分区大小.通过gparted 软件 3.查看磁盘命令.&amp;#123;.line-numbers&amp;#125;1df -hl 4.显示隐藏文件&amp;#123;.line-numb">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-12-05T02:26:52.370Z">
+<meta property="og:updated_time" content="2018-12-13T01:10:00.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Ubuntu系统磁盘相关命令">
 <meta name="twitter:description" content="1.swap分区大小. 内核空间交换区分利用参数查看命令&amp;#123;.line-numbers&amp;#125;1cat /proc/sys/vm/swappiness   cat /proc/sys/vm/swappiness 2.调整分区大小.通过gparted 软件 3.查看磁盘命令.&amp;#123;.line-numbers&amp;#125;1df -hl 4.显示隐藏文件&amp;#123;.line-numb">
@@ -361,7 +361,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="更新于：2018-12-05 10:26:52" itemprop="dateModified" datetime="2018-12-05T10:26:52+08:00">2018-12-05</time>
+                <time title="更新于：2018-12-13 09:10:00" itemprop="dateModified" datetime="2018-12-13T09:10:00+08:00">2018-12-13</time>
               
             
           </span>
@@ -406,7 +406,7 @@
                 
                   <span class="post-meta-item-text">Symbols count in article：</span>
                 
-                <span title="Symbols count in article">464</span>
+                <span title="Symbols count in article">972</span>
               
 
               
@@ -420,7 +420,7 @@
                 
                   <span class="post-meta-item-text">Reading time &asymp;</span>
                 
-                <span title="Reading time">1 mins.</span>
+                <span title="Reading time">2 mins.</span>
               
             </div>
           
@@ -452,6 +452,12 @@
 <h3 id="6-fork-函数"><a href="#6-fork-函数" class="headerlink" title="6.fork()函数"></a>6.fork()函数</h3><blockquote>
 <p>只需记住一点:fork()函数调用一次返回两次。<br>在父进程中 根据返回值(子进程PID)继续执行<br>在子进程中 根据返回值(0) 再继续执行。<br>如下例子  根据短路原则 main作为父进程 会创建子进程1 子进程1创建子进程2。<br>子进程保存了父进程前的代码状态 并直接运行。<br><figure class="highlight c"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">fork()||fork();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 </blockquote>
+<h3 id="7-进程与线程"><a href="#7-进程与线程" class="headerlink" title="7.进程与线程"></a>7.进程与线程</h3><blockquote>
+<p>进程是操作系统进行资源分配和调度的一个独立单位。线程是CPU调度和分派的基本单位，是比进程更小的能独立进行的基本单位。线程是进程的一个实体，一个进程中包含多个线程，线程是共享进程的地址空间。</p>
+</blockquote>
+<h3 id="8-标准输入输出"><a href="#8-标准输入输出" class="headerlink" title="8.标准输入输出"></a>8.标准输入输出</h3><p>0,1,2叫文件描述符；Linux中，每打开一个文件都有一个小的整数与之对应，就是文件描述符！<br>0 是标准输入的 （stdin）<br>1 是标准输出的 （stdout）<br>2 是标准报错输出的 （stderr）<br>‘&lt;’是输入重定向符<br>‘&gt;’是输出重定向符</p>
+<h3 id="9-reboot和shutdown-init"><a href="#9-reboot和shutdown-init" class="headerlink" title="9.reboot和shutdown init"></a>9.reboot和shutdown init</h3><p>reboot是重新启动 删除一切进程。shutdown是立即停止然后重新启动。shutdown命令可以安全地关闭或重启Linux系统，它在系统关闭之前给系统上的所有登录用户提示一条警告信息。该命令还允许用户指定一个时间参数，可以是一个精确的时间，也可以是从现在开始的一个时间段。</p>
+<p>init是所有进程的祖先，其进程号始终为1。init用于切换系统的运行级别，切换的工作是立即完成的。init 0命令用于立即将系统运行级别切换为0，即关机；init 6命令用于将系统运行级别切换为6，即重新启动。</p>
 
       
     </div>
@@ -717,7 +723,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-swap分区大小"><span class="nav-number">1.</span> <span class="nav-text">1.swap分区大小.</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-调整分区大小"><span class="nav-number">2.</span> <span class="nav-text">2.调整分区大小.</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-查看磁盘命令"><span class="nav-number">3.</span> <span class="nav-text">3.查看磁盘命令.</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-显示隐藏文件"><span class="nav-number">4.</span> <span class="nav-text">4.显示隐藏文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-adduser-useradd"><span class="nav-number">5.</span> <span class="nav-text">5.adduser useradd</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-fork-函数"><span class="nav-number">6.</span> <span class="nav-text">6.fork()函数</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-swap分区大小"><span class="nav-number">1.</span> <span class="nav-text">1.swap分区大小.</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-调整分区大小"><span class="nav-number">2.</span> <span class="nav-text">2.调整分区大小.</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-查看磁盘命令"><span class="nav-number">3.</span> <span class="nav-text">3.查看磁盘命令.</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-显示隐藏文件"><span class="nav-number">4.</span> <span class="nav-text">4.显示隐藏文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-adduser-useradd"><span class="nav-number">5.</span> <span class="nav-text">5.adduser useradd</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-fork-函数"><span class="nav-number">6.</span> <span class="nav-text">6.fork()函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-进程与线程"><span class="nav-number">7.</span> <span class="nav-text">7.进程与线程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-标准输入输出"><span class="nav-number">8.</span> <span class="nav-text">8.标准输入输出</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#9-reboot和shutdown-init"><span class="nav-number">9.</span> <span class="nav-text">9.reboot和shutdown init</span></a></li></ol></div>
             
 
           </div>
@@ -752,7 +758,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="Symbols count total">19k</span>
+    <span title="Symbols count total">20k</span>
   
 
   
@@ -761,7 +767,7 @@
       <i class="fa fa-coffee"></i>
     </span>
     
-    <span title="Reading time total">35 mins.</span>
+    <span title="Reading time total">36 mins.</span>
   
 </div>
 
