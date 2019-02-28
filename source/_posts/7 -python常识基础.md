@@ -101,6 +101,13 @@ for item in a:
 	print (item)
 pass
 # 0 2 4 6 8
+
+
+def fil(x):
+	return abs(x)>2
+for item in filter(fil,[1,-2,3,-4]):
+	print(item)
+# -4
 ```
 
 ### 8.python 中的None True False
@@ -210,6 +217,13 @@ stackoverflow上有人说可以这样理解map()：
 map(f, iterable)
 #基本上等于：
 [f(x) for x in iterable]
+
+def f(x):
+	return abs(x)
+for item in map(f,[1,-2,3,-4]):
+	print(item)
+
+# 1 2 3 4
 ```
 
 ### 14.赋值
@@ -263,3 +277,9 @@ print('-'.join(seq))
 一类是generator，包括生成器和带yield的generator function。
 这些可以直接作用于for循环的对象统称为可迭代对象：Iterable。
 可以使用isinstance()判断一个对象是否是Iterable对象：
+
+### 19.python中的元组。
+> 元组数据结构类似于list 但是元素不能修改类似于string 但是又可以进行拼接 截取操作。
+
+### 20.为什么的大部分语言都是0-based索引。
+> 首先明确索引脚标表示的是对首元素的偏移量。基于0-based的脚标表示 这个在汇编语言时代可以直接使用MOV指令比较方便。即下标可以直接等价成MOV值到偏移寄存器里，而基址寄存器里面保存的是数组头的地址，结合这两个就可以寻址取值。在python中  据python之父介绍 使用0-based的原因主要是python的半开区间切片语法与0-based完美契合。Fortan使用1-based。

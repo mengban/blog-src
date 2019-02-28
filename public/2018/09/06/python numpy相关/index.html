@@ -116,7 +116,7 @@
 <meta property="og:site_name" content="mengban">
 <meta property="og:description" content="1.向量堆叠。 &amp;#123;.line-numbers&amp;#125;123456x = [1,2,3,1]m_v = np.vstack([x,x])#array([[1, 2, 3, 1],#       [1, 2, 3, 1]])m_h = np.hstack([x,x])#array([1, 2, 3, 1, 1, 2, 3, 1])  2.获取numpy array 数组的最值及其索引。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-10-05T14:50:23.886Z">
+<meta property="og:updated_time" content="2019-02-24T03:36:43.749Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="python-向量处理">
 <meta name="twitter:description" content="1.向量堆叠。 &amp;#123;.line-numbers&amp;#125;123456x = [1,2,3,1]m_v = np.vstack([x,x])#array([[1, 2, 3, 1],#       [1, 2, 3, 1]])m_h = np.hstack([x,x])#array([1, 2, 3, 1, 1, 2, 3, 1])  2.获取numpy array 数组的最值及其索引。">
@@ -361,7 +361,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="更新于：2018-10-05 22:50:23" itemprop="dateModified" datetime="2018-10-05T22:50:23+08:00">2018-10-05</time>
+                <time title="更新于：2019-02-24 11:36:43" itemprop="dateModified" datetime="2019-02-24T11:36:43+08:00">2019-02-24</time>
               
             
           </span>
@@ -406,7 +406,7 @@
                 
                   <span class="post-meta-item-text">Symbols count in article：</span>
                 
-                <span title="Symbols count in article">396</span>
+                <span title="Symbols count in article">1.5k</span>
               
 
               
@@ -420,7 +420,7 @@
                 
                   <span class="post-meta-item-text">Reading time &asymp;</span>
                 
-                <span title="Reading time">1 mins.</span>
+                <span title="Reading time">3 mins.</span>
               
             </div>
           
@@ -446,6 +446,11 @@
 </li>
 <li><p>2.获取numpy array 数组的最值及其索引。</p>
 <figure class="highlight python"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">ret = np.where(m_v == np.min(m_v))</span><br><span class="line">print(ret)</span><br><span class="line"><span class="comment">#(array([0, 1], dtype=int64), array([0, 0], dtype=int64))  </span></span><br><span class="line"><span class="comment"># tuple 类型数据</span></span><br><span class="line">ret[<span class="number">0</span>]</span><br><span class="line"><span class="comment">#array([0, 1], dtype=int64)</span></span><br><span class="line">ret[<span class="number">0</span>][<span class="number">1</span>]</span><br><span class="line"><span class="comment">#1</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>3.numpy 的axis机制<br>以np.sum()为例:2<em>3</em>4的输入 指定在维度axis上进行求和 得到的输出会不会再有该axis。<br>如np.sum(b,axis = 0)后的shape为3*4</p>
+<figure class="highlight python"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>a = np.linspace(<span class="number">1</span>,<span class="number">24</span>,num=<span class="number">24</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a.reshape((<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>))</span><br><span class="line">array([[[ <span class="number">1.</span>,  <span class="number">2.</span>,  <span class="number">3.</span>,  <span class="number">4.</span>],</span><br><span class="line">        [ <span class="number">5.</span>,  <span class="number">6.</span>,  <span class="number">7.</span>,  <span class="number">8.</span>],</span><br><span class="line">        [ <span class="number">9.</span>, <span class="number">10.</span>, <span class="number">11.</span>, <span class="number">12.</span>]],</span><br><span class="line"></span><br><span class="line">       [[<span class="number">13.</span>, <span class="number">14.</span>, <span class="number">15.</span>, <span class="number">16.</span>],</span><br><span class="line">        [<span class="number">17.</span>, <span class="number">18.</span>, <span class="number">19.</span>, <span class="number">20.</span>],</span><br><span class="line">        [<span class="number">21.</span>, <span class="number">22.</span>, <span class="number">23.</span>, <span class="number">24.</span>]]])</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a</span><br><span class="line">array([ <span class="number">1.</span>,  <span class="number">2.</span>,  <span class="number">3.</span>,  <span class="number">4.</span>,  <span class="number">5.</span>,  <span class="number">6.</span>,  <span class="number">7.</span>,  <span class="number">8.</span>,  <span class="number">9.</span>, <span class="number">10.</span>, <span class="number">11.</span>, <span class="number">12.</span>, <span class="number">13.</span>,</span><br><span class="line">       <span class="number">14.</span>, <span class="number">15.</span>, <span class="number">16.</span>, <span class="number">17.</span>, <span class="number">18.</span>, <span class="number">19.</span>, <span class="number">20.</span>, <span class="number">21.</span>, <span class="number">22.</span>, <span class="number">23.</span>, <span class="number">24.</span>])</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>b = a.reshape((<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>))</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>b</span><br><span class="line">array([[[ <span class="number">1.</span>,  <span class="number">2.</span>,  <span class="number">3.</span>,  <span class="number">4.</span>],</span><br><span class="line">        [ <span class="number">5.</span>,  <span class="number">6.</span>,  <span class="number">7.</span>,  <span class="number">8.</span>],</span><br><span class="line">        [ <span class="number">9.</span>, <span class="number">10.</span>, <span class="number">11.</span>, <span class="number">12.</span>]],</span><br><span class="line"></span><br><span class="line">       [[<span class="number">13.</span>, <span class="number">14.</span>, <span class="number">15.</span>, <span class="number">16.</span>],</span><br><span class="line">        [<span class="number">17.</span>, <span class="number">18.</span>, <span class="number">19.</span>, <span class="number">20.</span>],</span><br><span class="line">        [<span class="number">21.</span>, <span class="number">22.</span>, <span class="number">23.</span>, <span class="number">24.</span>]]])</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>np.sum(b,axis = <span class="number">0</span>)</span><br><span class="line">array([[<span class="number">14.</span>, <span class="number">16.</span>, <span class="number">18.</span>, <span class="number">20.</span>],</span><br><span class="line">       [<span class="number">22.</span>, <span class="number">24.</span>, <span class="number">26.</span>, <span class="number">28.</span>],</span><br><span class="line">       [<span class="number">30.</span>, <span class="number">32.</span>, <span class="number">34.</span>, <span class="number">36.</span>]])</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>np.sum(b,axis = <span class="number">1</span>)</span><br><span class="line">array([[<span class="number">15.</span>, <span class="number">18.</span>, <span class="number">21.</span>, <span class="number">24.</span>],</span><br><span class="line">       [<span class="number">51.</span>, <span class="number">54.</span>, <span class="number">57.</span>, <span class="number">60.</span>]])</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>np.sum(b,axis = <span class="number">2</span>)</span><br><span class="line">array([[<span class="number">10.</span>, <span class="number">26.</span>, <span class="number">42.</span>],</span><br><span class="line">       [<span class="number">58.</span>, <span class="number">74.</span>, <span class="number">90.</span>]])</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>4 numpy.reshape<br>np.reshape(x,(H,W,-1))<br>其中-1表示自动推断</p>
 </li>
 </ul>
 
@@ -563,7 +568,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">21</span>
+                    <span class="site-state-item-count">26</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -600,7 +605,13 @@
                     
                       
                     
-                    <span class="site-state-item-count">12</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">15</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -659,7 +670,15 @@
                     
                       
                     
-                    <span class="site-state-item-count">23</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">27</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -711,7 +730,7 @@
         <!---add by lius--->
 <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 <!---add by lius--->
-<div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
   <span class="with-love" id="animate">
     <i class="fa fa-user"></i>
   </span>
@@ -723,7 +742,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="Symbols count total">20k</span>
+    <span title="Symbols count total">26k</span>
   
 
   
@@ -732,7 +751,7 @@
       <i class="fa fa-coffee"></i>
     </span>
     
-    <span title="Reading time total">36 mins.</span>
+    <span title="Reading time total">47 mins.</span>
   
 </div>
 

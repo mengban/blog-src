@@ -429,7 +429,9 @@
 </blockquote>
 <h3 id="2-为什么一个80端口可以建立很多连接"><a href="#2-为什么一个80端口可以建立很多连接" class="headerlink" title="2.为什么一个80端口可以建立很多连接?"></a>2.为什么一个80端口可以建立很多连接?</h3><p>一个TCP连接需要由四元组来形成，即(src_ip,src_port,dst_ip,dst_port)。假设有客户端建立了连接(src_ip1,src_port1,dst_ip1,dst_port1)，那么，如果我们还有listen在(src_ip1,src_port1)，那么当(dst_ip1,dst_port1)发送消息过来，系统应该把消息给谁？所以就说明了客户端占用了某一端口时，该端口就不能被其它进程listen了。</p>
 <p>那么，对于有些童鞋，可能还有这样的疑问，是否一台机器就只能建立65535个连接了（端口16位限制）？非也，一个连接由四元组(src_ip,src_port,dst_ip,dst_port)形式，那么当(src_ip,src_port)一定时，变化的(dst_ip,dst_port)就可以建立更多连接了。<br>所以一台机器可以建立<strong>最多65535个连接是大错特错的</strong>。所有的一切都可以用四元组原理来分析即：<strong>一个TCP连接需要由四元组来形成，即(src_ip,src_port,dst_ip,dst_port),只要四个元素的组合中有一个元素不一样，那就可以区别不同的连接</strong>。</p>
-<h3 id="3-承接2问-为什么还会出现端口被占的情况？？"><a href="#3-承接2问-为什么还会出现端口被占的情况？？" class="headerlink" title="3.承接2问 为什么还会出现端口被占的情况？？"></a>3.承接2问 为什么还会出现端口被占的情况？？</h3><p>这个问题问的好。默认情况下 一个网络应用程序的套接字绑定了一个端口 这时候别的套接字就无法使用这个端口。这个就是为什么我们实际应用过程中经常会出现 端口已经被使用的情况。</p>
+<h3 id="3-承接2问-为什么还会出现端口被占的情况？？"><a href="#3-承接2问-为什么还会出现端口被占的情况？？" class="headerlink" title="3.承接2问 为什么还会出现端口被占的情况？？"></a>3.承接2问 为什么还会出现端口被占的情况？？</h3><blockquote>
+<p>这个问题问的好。默认情况下 一个网络应用程序的套接字绑定了一个端口 这时候别的套接字就无法使用这个端口。这个就是为什么我们实际应用过程中经常会出现 端口已经被使用的情况。</p>
+</blockquote>
 <p>但是 在实际网络编程过程中，socket有一个 SO_REUSEADDR 选项。该选项可以用在以下四种情况下。 (摘自《Unix网络编程》卷一，即UNPv1)</p>
 <blockquote>
 <p>1、当有一个有相同本地地址和端口的socket1处于TIME_WAIT状态时，而你启动的程序的socket2要占用该地址和端口，你的程序就要用到该选项。<br>2、SO_REUSEADDR允许同一port上启动同一服务器的多个实例(多个进程)。但每个实例绑定的IP地址是不能相同的。在有多块网卡或用IP Alias技术的机器可以测试这种情况。<br>3、SO_REUSEADDR允许单个进程绑定相同的端口到多个socket上，但每个socket绑定的ip地址不同。这和2很相似，区别请看UNPv1。<br>4、SO_REUSEADDR允许完全相同的地址和端口的重复绑定。但这只用于UDP的多播，不用于TCP。</p>
@@ -488,6 +490,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/12/14/22_opencv相关/" rel="prev" title="opencv相关知识">
+                opencv相关知识 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -557,7 +563,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">21</span>
+                    <span class="site-state-item-count">26</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -594,7 +600,13 @@
                     
                       
                     
-                    <span class="site-state-item-count">12</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">15</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -653,7 +665,15 @@
                     
                       
                     
-                    <span class="site-state-item-count">23</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">27</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -721,7 +741,7 @@
         <!---add by lius--->
 <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 <!---add by lius--->
-<div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
   <span class="with-love" id="animate">
     <i class="fa fa-user"></i>
   </span>
@@ -733,7 +753,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="Symbols count total">20k</span>
+    <span title="Symbols count total">26k</span>
   
 
   
@@ -742,7 +762,7 @@
       <i class="fa fa-coffee"></i>
     </span>
     
-    <span title="Reading time total">36 mins.</span>
+    <span title="Reading time total">47 mins.</span>
   
 </div>
 

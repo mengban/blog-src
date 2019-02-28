@@ -108,18 +108,18 @@
 
 
 
-  <meta name="description" content="1.全排列 1 字典序法  字典序法主要用来求下一个方便。如果要完全遍历 字典序法并不是比较好的选择。时间还是比较复杂的,需要比较n!次字典序法的主要步骤为：   对于序列A 从右至左 找出第一个左边大于右边的数字。并记下其位置i.    继续对该序列 从右至左 找出第一个比A[i] 大的数字 记下其位置j(要保证j&amp;gt;i). 由于A[i]右侧的数字是递增的。在A[i]的右边的数字中，找出所有">
+  <meta name="description" content="1.全排列 1 字典序法……………………………………………………………………….. 字典序法主要用来求下一个方便。如果要完全遍历 字典序法并不是比较好的选择。时间还是比较复杂的,需要比较n!次字典序法的主要步骤为：   对于序列A 从右至左 找出第一个左边小于右边的数字。并记下其位置i.    继续对该序列 从右至左 找出第一个比A[i] 大的数字 记下其位置j(要保证j&amp;gt;i). 由于A[i">
 <meta name="keywords" content="算法,interview">
 <meta property="og:type" content="article">
 <meta property="og:title" content="面试经典算法">
 <meta property="og:url" content="http://yoursite.com/2018/11/28/20-经典算法/index.html">
 <meta property="og:site_name" content="mengban">
-<meta property="og:description" content="1.全排列 1 字典序法  字典序法主要用来求下一个方便。如果要完全遍历 字典序法并不是比较好的选择。时间还是比较复杂的,需要比较n!次字典序法的主要步骤为：   对于序列A 从右至左 找出第一个左边大于右边的数字。并记下其位置i.    继续对该序列 从右至左 找出第一个比A[i] 大的数字 记下其位置j(要保证j&amp;gt;i). 由于A[i]右侧的数字是递增的。在A[i]的右边的数字中，找出所有">
+<meta property="og:description" content="1.全排列 1 字典序法……………………………………………………………………….. 字典序法主要用来求下一个方便。如果要完全遍历 字典序法并不是比较好的选择。时间还是比较复杂的,需要比较n!次字典序法的主要步骤为：   对于序列A 从右至左 找出第一个左边小于右边的数字。并记下其位置i.    继续对该序列 从右至左 找出第一个比A[i] 大的数字 记下其位置j(要保证j&amp;gt;i). 由于A[i">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2018-11-28T01:22:00.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="面试经典算法">
-<meta name="twitter:description" content="1.全排列 1 字典序法  字典序法主要用来求下一个方便。如果要完全遍历 字典序法并不是比较好的选择。时间还是比较复杂的,需要比较n!次字典序法的主要步骤为：   对于序列A 从右至左 找出第一个左边大于右边的数字。并记下其位置i.    继续对该序列 从右至左 找出第一个比A[i] 大的数字 记下其位置j(要保证j&amp;gt;i). 由于A[i]右侧的数字是递增的。在A[i]的右边的数字中，找出所有">
+<meta name="twitter:description" content="1.全排列 1 字典序法……………………………………………………………………….. 字典序法主要用来求下一个方便。如果要完全遍历 字典序法并不是比较好的选择。时间还是比较复杂的,需要比较n!次字典序法的主要步骤为：   对于序列A 从右至左 找出第一个左边小于右边的数字。并记下其位置i.    继续对该序列 从右至左 找出第一个比A[i] 大的数字 记下其位置j(要保证j&amp;gt;i). 由于A[i">
 
 
 
@@ -390,7 +390,7 @@
                 
                   <span class="post-meta-item-text">Symbols count in article：</span>
                 
-                <span title="Symbols count in article">776</span>
+                <span title="Symbols count in article">980</span>
               
 
               
@@ -404,7 +404,7 @@
                 
                   <span class="post-meta-item-text">Reading time &asymp;</span>
                 
-                <span title="Reading time">1 mins.</span>
+                <span title="Reading time">2 mins.</span>
               
             </div>
           
@@ -425,12 +425,11 @@
 
       
         <h3 id="1-全排列"><a href="#1-全排列" class="headerlink" title="1.全排列"></a>1.全排列</h3><ul>
-<li><p>1 字典序法</p>
-<blockquote>
+<li>1 字典序法………………………………………………………………………..<blockquote>
 <p>字典序法主要用来求下一个方便。如果要完全遍历 字典序法并不是比较好的选择。时间还是比较复杂的,需要比较<strong>n!</strong>次<br>字典序法的主要步骤为：</p>
 <ul>
 <li><ol>
-<li>对于序列A 从右至左 找出<strong>第一个左边大于右边</strong>的数字。并记下其位置i.</li>
+<li>对于序列A 从右至左 找出<strong>第一个左边小于右边</strong>的数字。并记下其位置i.</li>
 </ol>
 </li>
 <li><ol start="2">
@@ -446,12 +445,18 @@
 </ol>
 </li>
 <li><ol start="5">
-<li>反转之后的序列即为当前排列的下一排列。</li>
+<li>反转之后的序列即为当前排列的下一排列。<br>那么是如何得到的呢，我们通过观察原数组可以发现，如果从末尾往前看，数字逐渐变大，到了2时才减小的，然后我们再从后往前找第一个比2大的数字，是3，那么我们交换2和3，再把此时3后面的所有数字转置一下即可，步骤如下：</li>
 </ol>
 </li>
 </ul>
 </blockquote>
 </li>
+</ul>
+<p>1　　<strong>2</strong>　　7　　4　　3　　1</p>
+<p>1　　<strong>2</strong>　　7　　4　　<strong>3</strong>　　1</p>
+<p>1　　<strong>3</strong>　　7　　4　　<strong>2</strong>　　1</p>
+<p>1　　3　　<strong>1</strong>　　<strong>2</strong>　　<strong>4</strong>　　<strong>7</strong></p>
+<ul>
 <li><ol start="2">
 <li>递归求解。主要思想是动态规划：即当前任务的完成是在上一个任务的基础上的。对已N个数 每个数轮流做开头 我们只需对剩余N-1个数的全排列即可，把第N个数放在N-1个数的全排列的开头就构成了N个数的全排列。这个明显的缺点就是有<strong>重复</strong>问题。</li>
 </ol>
@@ -599,7 +604,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">21</span>
+                    <span class="site-state-item-count">26</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -636,7 +641,13 @@
                     
                       
                     
-                    <span class="site-state-item-count">12</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">15</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -695,7 +706,15 @@
                     
                       
                     
-                    <span class="site-state-item-count">23</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">27</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -763,7 +782,7 @@
         <!---add by lius--->
 <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 <!---add by lius--->
-<div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
   <span class="with-love" id="animate">
     <i class="fa fa-user"></i>
   </span>
@@ -775,7 +794,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="Symbols count total">20k</span>
+    <span title="Symbols count total">26k</span>
   
 
   
@@ -784,7 +803,7 @@
       <i class="fa fa-coffee"></i>
     </span>
     
-    <span title="Reading time total">36 mins.</span>
+    <span title="Reading time total">47 mins.</span>
   
 </div>
 

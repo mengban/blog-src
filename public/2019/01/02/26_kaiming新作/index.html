@@ -1,0 +1,978 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=6.3.0" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.3.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.3.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.3.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.3.0" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '6.3.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="###   导读:FAIR(Facebook AI Reaearch) 何恺明团队最新论文提出 “全景 FPN”，聚焦于图像的全景分割任务，将分别用于语义分割和实例分割的FCN和Mask R-CNN结合起来，设计了 Panoptic FPN。该方法可能成为全景分割研究的强大基线。  全景特征金字塔网络 Panoptic FPN Panoptic FPN 是一个简单的、单网络的 baseline，它">
+<meta name="keywords" content="math">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数学知识集锦">
+<meta property="og:url" content="http://yoursite.com/2019/01/02/26_kaiming新作/index.html">
+<meta property="og:site_name" content="mengban">
+<meta property="og:description" content="###   导读:FAIR(Facebook AI Reaearch) 何恺明团队最新论文提出 “全景 FPN”，聚焦于图像的全景分割任务，将分别用于语义分割和实例分割的FCN和Mask R-CNN结合起来，设计了 Panoptic FPN。该方法可能成为全景分割研究的强大基线。  全景特征金字塔网络 Panoptic FPN Panoptic FPN 是一个简单的、单网络的 baseline，它">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://raw.githubusercontent.com/mengban/ImageHosting/master/cnblog/20190111095343.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/mengban/ImageHosting/master/cnblog/20190111095817.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/mengban/ImageHosting/master/cnblog/20190111100055.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/mengban/ImageHosting/master/cnblog/20190111100216.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/mengban/ImageHosting/master/cnblog/20190111100341.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/mengban/ImageHosting/master/cnblog/20190111100518.png">
+<meta property="og:updated_time" content="2017-01-02T09:35:00.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="数学知识集锦">
+<meta name="twitter:description" content="###   导读:FAIR(Facebook AI Reaearch) 何恺明团队最新论文提出 “全景 FPN”，聚焦于图像的全景分割任务，将分别用于语义分割和实例分割的FCN和Mask R-CNN结合起来，设计了 Panoptic FPN。该方法可能成为全景分割研究的强大基线。  全景特征金字塔网络 Panoptic FPN Panoptic FPN 是一个简单的、单网络的 baseline，它">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/mengban/ImageHosting/master/cnblog/20190111095343.png">
+
+
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/01/02/26_kaiming新作/"/>
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>数学知识集锦 | mengban</title>
+  
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">mengban</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">mengban's homepage</p>
+      
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+    <a href="/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />首页</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+    <a href="/tags/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />标签</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+    <a href="/categories/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-th"></i> <br />分类</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+    <a href="/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />归档</a>
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/02/26_kaiming新作/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="博主">
+      <meta itemprop="description" content="This is description">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="mengban">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">数学知识集锦
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建于：2019-01-02 10:26:00" itemprop="dateCreated datePublished" datetime="2019-01-02T10:26:00+08:00">2019-01-02</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="更新于：2017-01-02 17:35:00" itemprop="dateModified" datetime="2017-01-02T17:35:00+08:00">2017-01-02</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/math/" itemprop="url" rel="index"><span itemprop="name">math</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Symbols count in article：</span>
+                
+                <span title="Symbols count in article">1.9k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">4 mins.</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>### </p>
+<blockquote>
+<p><strong>导读</strong>:FAIR(Facebook AI Reaearch) 何恺明团队最新论文提出 “全景 FPN”，聚焦于图像的全景分割任务，将分别用于语义分割和实例分割的FCN和Mask R-CNN结合起来，设计了 Panoptic FPN。该方法可能成为全景分割研究的强大基线。</p>
+</blockquote>
+<h3 id="全景特征金字塔网络-Panoptic-FPN"><a href="#全景特征金字塔网络-Panoptic-FPN" class="headerlink" title="全景特征金字塔网络 Panoptic FPN"></a>全景特征金字塔网络 Panoptic FPN</h3><blockquote>
+<p>Panoptic FPN 是一个简单的、单网络的 baseline，它的目标是在实例分割和语义分割以及它们的联合任务：全景分割上实现最高性能。<br>设计原则是：从具有FPN Mask R-CNN 开始，进行最小的修改，生成一个语义分割的 dense-pixel 输出。<br><strong>模型架构如下：</strong><br><img src="https://raw.githubusercontent.com/mengban/ImageHosting/master/cnblog/20190111095343.png" alt=""></p>
+</blockquote>
+<p>####特征金字塔网络 (Feature Pyramid Network)：</p>
+<blockquote>
+<p>首先简要回顾一下 FPN。FPN 采用一个具有多空间分辨率特征的标准网络 (如 ResNet)，并添加一个具有横向连接的自上而下的通道，如图 1a 所示。自上而下的路径从网络的最深层开始，并逐步向上采样，同时添加自底向上路径的高分辨率特性的转换版本。FPN 生成一个金字塔，通常具有 1/32 到 1/4 的分辨率，其中每个金字塔级别具有相同的通道维度 (默认是 256)。</p>
+</blockquote>
+<p>####实例分割分支：</p>
+<blockquote>
+<p>FPN 的设计，特别是对所有金字塔级别使用相同的通道维数，使得附加基于区域的对象检测器变得很容易，比如 Faster R-CNN。 为了输出实例分段，我们使用 Mask R-CNN，它通过添加 FCN 分支来预测每个候选区域的二进制分段 Mask，从而扩展 Faster R-CNN.<br><img src="https://raw.githubusercontent.com/mengban/ImageHosting/master/cnblog/20190111095817.png" alt=""></p>
+</blockquote>
+<h4 id="Panoptic-FPN："><a href="#Panoptic-FPN：" class="headerlink" title="Panoptic FPN："></a>Panoptic FPN：</h4><blockquote>
+<p>如前所述，我们的方法是使用 FPN 对 Mask R-CNN 进行修改，实现像素级语义分割预测。然而，为了实现准确的预测，该任务所使用的特性应该具备以下特征：</p>
+<blockquote>
+<ul>
+<li>1 具有适当的高分辨率，以捕获精细的结构;</li>
+<li>2 编码足够丰富的语义，以准确地预测类标签;</li>
+<li>3 虽然 FPN 是为目标检测而设计的，但是这些要求——高分辨率、丰富的、多尺度的特征——正好是 FPN 的特征。因此，我们建议在 FPN 上附加一个简单而快速的语义分割分支。<br><img src="https://raw.githubusercontent.com/mengban/ImageHosting/master/cnblog/20190111100055.png" alt=""></li>
+</ul>
+</blockquote>
+</blockquote>
+<h3 id="实验和结果"><a href="#实验和结果" class="headerlink" title="实验和结果"></a>实验和结果</h3><blockquote>
+<p>我们的目标是证明我们的方法，Panoptic FPN，可以作为一个简单有效的单网络 baseline，用于实例分割、语义分割，以及他们的联合任务全景分割。<br>因此，我们从测试语义分割方法 (我们将这个单任务变体称为 Semantic FPN) 开始分析。令人惊讶的是，这个简单的模型在 COCO 和 Cityscapes 数据集上实现了具有竞争力的语义分割结果。<br>接下来，我们分析了语义分割分支与 Mask R-CNN 的集成，以及联合训练的效果。最后，我们再次在 COCO 和 Cityscapes 数据集上展示了全景分割的结果。定性结果如表 2 和表 6 所示。</p>
+</blockquote>
+<p><img src="https://raw.githubusercontent.com/mengban/ImageHosting/master/cnblog/20190111100216.png" alt=""></p>
+<p>###多任务训练</p>
+<blockquote>
+<p>我们的方法在单任务上表现非常好；对于语义分割，上一节的结果证明了这一点；对于实例分割，这是已知的，因为该方法基于 Mask R-CNN。但是，我们是否可以在多任务环境中共同训练这两项任务呢?<br>为了将我们的语义分割分支与 Mask R-CNN 中的实例分割分支结合起来，我们需要确定如何训练一个单一的、统一的网络。以往的研究表明，多任务训练往往具有挑战性，并可能导致结果精度下降。我们同样观察到，对于语义或实例分割，添加辅助任务与单任务基线相比会降低准确性。<br><img src="https://raw.githubusercontent.com/mengban/ImageHosting/master/cnblog/20190111100341.png" alt=""><br>表中，ResNet-50-FPN 的结果表明，使用一个简单的语义分割损失λs，或实例分割损失λi，结果可以改善单任务 baseline 的结果。具体来说，适当地添加一个语义分割分支λs 能改进实例分割，反之亦然。这可以用来改进单任务结果。然而，我们的主要目标是同时解决这两个任务，这将在下一节讨论。</p>
+</blockquote>
+<p>###Panoptic FPN<br><img src="https://raw.githubusercontent.com/mengban/ImageHosting/master/cnblog/20190111100518.png" alt=""></p>
+<blockquote>
+<p>测试 Panoptic FPN 对于全景分割的联合任务的结果，其中网络必须联合并准确的输出 stuff 和 thing 分割。<br>主要结果：在表 3a 中，我们比较了使用相同骨架的 Panoptic FPN 分别训练的两个网络。Panoptic FPN 具有相当的性能，但只需要一半的计算量。<br>我们还通过比较两个单独的网络，分别是 Panoptic R101-FPN 和 R50-FPN×2，来平衡计算预算，见表 3b。使用大致相等的计算预算，Panoptic FPN 明显优于两个独立的网络。<br>综上所述，这些结果表明联合方法是有益的，我们提出的 Panoptic FPN 方法可以作为联合任务的可靠 baseline。</p>
+</blockquote>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+        <!---<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">--->
+          
+          <!---mod by lius--->
+            <!---<a href="/tags/math/" rel="tag"># math</a>--->
+            <a href="/tags/math/" rel="tag"><i class="fa fa-tag"></i> math</a>
+          <!---mod by lius--->
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/12/27/24_GPU问题集锦/" rel="next" title="GPU问题集锦">
+                <i class="fa fa-chevron-left"></i> GPU问题集锦
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/01/02/25_数学知识集锦/" rel="prev" title="数学知识集锦">
+                数学知识集锦 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">博主</p>
+              <p class="site-description motion-element" itemprop="description">This is description</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">26</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">15</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">27</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/mengban" target="_blank" title="GitHub"><i class="fa fa-fw fa-gitHub"></i>GitHub</a>
+                  
+                </span>
+              
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#全景特征金字塔网络-Panoptic-FPN"><span class="nav-number">1.</span> <span class="nav-text">全景特征金字塔网络 Panoptic FPN</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Panoptic-FPN："><span class="nav-number">1.1.</span> <span class="nav-text">Panoptic FPN：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实验和结果"><span class="nav-number">2.</span> <span class="nav-text">实验和结果</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <!---add by lius--->
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<!---add by lius--->
+<div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">mengban</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+    <span title="Symbols count total">26k</span>
+  
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    
+    <span title="Reading time total">47 mins.</span>
+  
+</div>
+
+
+
+<!---add by lius--->
+  <div class="powered-by">
+<i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
+  本站访客数:<span id="busuanzi_value_site_pv"></span>
+</span>
+</div>
+  <!---add by lius--->
+  
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+	
+    
+
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.3.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.3.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=6.3.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.3.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.3.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.3.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.3.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

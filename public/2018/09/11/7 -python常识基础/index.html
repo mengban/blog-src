@@ -406,7 +406,7 @@
                 
                   <span class="post-meta-item-text">Symbols count in article：</span>
                 
-                <span title="Symbols count in article">5.3k</span>
+                <span title="Symbols count in article">5.8k</span>
               
 
               
@@ -459,7 +459,7 @@
 <blockquote>
 <p>用法<br>filter(function,iterable)</p>
 </blockquote>
-<figure class="highlight python"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">a = filter(<span class="keyword">lambda</span> x: x % <span class="number">2</span> ==<span class="number">0</span>，range(<span class="number">10</span>))</span><br><span class="line">print(a)</span><br><span class="line"><span class="comment">#&lt;filter object at 0x0000011BF5D3E518&gt;</span></span><br><span class="line"><span class="keyword">for</span> item <span class="keyword">in</span> a:</span><br><span class="line">	<span class="keyword">print</span> (item)</span><br><span class="line"><span class="keyword">pass</span></span><br><span class="line"><span class="comment"># 0 2 4 6 8</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">a = filter(<span class="keyword">lambda</span> x: x % <span class="number">2</span> ==<span class="number">0</span>，range(<span class="number">10</span>))</span><br><span class="line">print(a)</span><br><span class="line"><span class="comment">#&lt;filter object at 0x0000011BF5D3E518&gt;</span></span><br><span class="line"><span class="keyword">for</span> item <span class="keyword">in</span> a:</span><br><span class="line">	<span class="keyword">print</span> (item)</span><br><span class="line"><span class="keyword">pass</span></span><br><span class="line"><span class="comment"># 0 2 4 6 8</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">fil</span><span class="params">(x)</span>:</span></span><br><span class="line">	<span class="keyword">return</span> abs(x)&gt;<span class="number">2</span></span><br><span class="line"><span class="keyword">for</span> item <span class="keyword">in</span> filter(fil,[<span class="number">1</span>,<span class="number">-2</span>,<span class="number">3</span>,<span class="number">-4</span>]):</span><br><span class="line">	print(item)</span><br><span class="line"><span class="comment"># -4</span></span><br></pre></td></tr></table></figure>
 <h3 id="8-python-中的None-True-False"><a href="#8-python-中的None-True-False" class="headerlink" title="8.python 中的None True False"></a>8.python 中的None True False</h3><figure class="highlight python"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">list1 = []</span><br><span class="line"><span class="keyword">if</span> list1 == <span class="keyword">None</span>:</span><br><span class="line">	print(<span class="string">"list1 is "</span>,list1)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">	print(<span class="string">"list1 is NULL"</span>)</span><br><span class="line"><span class="comment"># list1 is NULL</span></span><br></pre></td></tr></table></figure>
 <p>判断对象是否为None 主要由以下写法：<br><figure class="highlight python"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> X <span class="keyword">is</span> <span class="keyword">None</span>:</span><br><span class="line">	<span class="keyword">pass</span></span><br><span class="line"><span class="keyword">if</span> <span class="keyword">not</span> X：</span><br><span class="line">	<span class="keyword">pass</span></span><br><span class="line"><span class="comment"># 当X为None,  False, 空字符串"", 0, 空列表[], 空字典&#123;&#125;, 空元组()这些时，not X为真，即无法分辨出他们之间的不同。</span></span><br><span class="line"><span class="keyword">if</span> <span class="keyword">not</span> X:</span><br><span class="line">	<span class="keyword">pass</span></span><br></pre></td></tr></table></figure></p>
 <blockquote>
@@ -498,7 +498,7 @@
 </blockquote>
 <h3 id="12-装饰函数"><a href="#12-装饰函数" class="headerlink" title="12.装饰函数"></a>12.装饰函数</h3><p>参见<a href="https://foofish.net/python-dec&gt;orator.html" target="_blank" rel="noopener">装饰函数</a>。写的是真好。</p>
 <h3 id="13-map-reduce函数。起源于Google鼎鼎大名-Map-Reduce论文。"><a href="#13-map-reduce函数。起源于Google鼎鼎大名-Map-Reduce论文。" class="headerlink" title="13.map/reduce函数。起源于Google鼎鼎大名 Map/Reduce论文。"></a>13.map/reduce函数。起源于Google鼎鼎大名 Map/Reduce论文。</h3><blockquote>
-<p>python中map()、filter()、reduce()这三个都是应用于序列的内置函数。<br>map(function, iterable, …)<br>map()函数接收两个参数，一个是函数，一个是序列，map将传入的函数依次作用到序列的每个元素，并把结果作为新的<strong>list</strong>(python2.7) <strong>Iterator</strong>(python3 使用之前需要list化)返回。<br>stackoverflow上有人说可以这样理解map()：<br><figure class="highlight python"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">map(f, iterable)</span><br><span class="line"><span class="comment">#基本上等于：</span></span><br><span class="line">[f(x) <span class="keyword">for</span> x <span class="keyword">in</span> iterable]</span><br></pre></td></tr></table></figure></p>
+<p>python中map()、filter()、reduce()这三个都是应用于序列的内置函数。<br>map(function, iterable, …)<br>map()函数接收两个参数，一个是函数，一个是序列，map将传入的函数依次作用到序列的每个元素，并把结果作为新的<strong>list</strong>(python2.7) <strong>Iterator</strong>(python3 使用之前需要list化)返回。<br>stackoverflow上有人说可以这样理解map()：<br><figure class="highlight python"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">map(f, iterable)</span><br><span class="line"><span class="comment">#基本上等于：</span></span><br><span class="line">[f(x) <span class="keyword">for</span> x <span class="keyword">in</span> iterable]</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">f</span><span class="params">(x)</span>:</span></span><br><span class="line">	<span class="keyword">return</span> abs(x)</span><br><span class="line"><span class="keyword">for</span> item <span class="keyword">in</span> map(f,[<span class="number">1</span>,<span class="number">-2</span>,<span class="number">3</span>,<span class="number">-4</span>]):</span><br><span class="line">	print(item)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 1 2 3 4</span></span><br></pre></td></tr></table></figure></p>
 </blockquote>
 <h3 id="14-赋值"><a href="#14-赋值" class="headerlink" title="14.赋值"></a>14.赋值</h3><blockquote>
 <p>多重赋值：x=y=z=1<br>多元赋值：x,y,z=1,3,’a string’<br>增量赋值：x+=1</p>
@@ -514,6 +514,12 @@
 </blockquote>
 <h3 id="18-可迭代对象。"><a href="#18-可迭代对象。" class="headerlink" title="18 可迭代对象。"></a>18 可迭代对象。</h3><blockquote>
 <p>可以直接作用于for循环的数据类型有以下几种：<br>一类是集合数据类型，如list、tuple、dict、set、str等；<br>一类是generator，包括生成器和带yield的generator function。<br>这些可以直接作用于for循环的对象统称为可迭代对象：Iterable。<br>可以使用isinstance()判断一个对象是否是Iterable对象：</p>
+</blockquote>
+<h3 id="19-python中的元组。"><a href="#19-python中的元组。" class="headerlink" title="19.python中的元组。"></a>19.python中的元组。</h3><blockquote>
+<p>元组数据结构类似于list 但是元素不能修改类似于string 但是又可以进行拼接 截取操作。</p>
+</blockquote>
+<h3 id="20-为什么的大部分语言都是0-based索引。"><a href="#20-为什么的大部分语言都是0-based索引。" class="headerlink" title="20.为什么的大部分语言都是0-based索引。"></a>20.为什么的大部分语言都是0-based索引。</h3><blockquote>
+<p>首先明确索引脚标表示的是对首元素的偏移量。基于0-based的脚标表示 这个在汇编语言时代可以直接使用MOV指令比较方便。即下标可以直接等价成MOV值到偏移寄存器里，而基址寄存器里面保存的是数组头的地址，结合这两个就可以寻址取值。在python中  据python之父介绍 使用0-based的原因主要是python的半开区间切片语法与0-based完美契合。Fortan使用1-based。</p>
 </blockquote>
 
       
@@ -639,7 +645,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">21</span>
+                    <span class="site-state-item-count">26</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -676,7 +682,13 @@
                     
                       
                     
-                    <span class="site-state-item-count">12</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">15</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -735,7 +747,15 @@
                     
                       
                     
-                    <span class="site-state-item-count">23</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">27</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -780,7 +800,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-python求整"><span class="nav-number">1.</span> <span class="nav-text">1.python求整</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-位操作"><span class="nav-number">2.</span> <span class="nav-text">2.位操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-lambda"><span class="nav-number">3.</span> <span class="nav-text">4.lambda</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-enumerate"><span class="nav-number">4.</span> <span class="nav-text">5.enumerate</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-set-求交-并-差集"><span class="nav-number">5.</span> <span class="nav-text">6.set 求交 并 差集</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-filter-函数"><span class="nav-number">6.</span> <span class="nav-text">7.filter 函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-python-中的None-True-False"><span class="nav-number">7.</span> <span class="nav-text">8.python 中的None True False</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#9-牛逼的sum函数。"><span class="nav-number">8.</span> <span class="nav-text">9.牛逼的sum函数。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#10-单引号-双引号-三引号"><span class="nav-number">9.</span> <span class="nav-text">10. 单引号 双引号 三引号</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#11-python-赋值-浅拷贝-深拷贝"><span class="nav-number">10.</span> <span class="nav-text">11. python 赋值 浅拷贝 深拷贝</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#12-装饰函数"><span class="nav-number">11.</span> <span class="nav-text">12.装饰函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#13-map-reduce函数。起源于Google鼎鼎大名-Map-Reduce论文。"><span class="nav-number">12.</span> <span class="nav-text">13.map/reduce函数。起源于Google鼎鼎大名 Map/Reduce论文。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#14-赋值"><span class="nav-number">13.</span> <span class="nav-text">14.赋值</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#15"><span class="nav-number">14.</span> <span class="nav-text">15.</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#16-zip-函数"><span class="nav-number">15.</span> <span class="nav-text">16.zip 函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#17-join-函数"><span class="nav-number">16.</span> <span class="nav-text">17 .join()函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#18-可迭代对象。"><span class="nav-number">17.</span> <span class="nav-text">18 可迭代对象。</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-python求整"><span class="nav-number">1.</span> <span class="nav-text">1.python求整</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-位操作"><span class="nav-number">2.</span> <span class="nav-text">2.位操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-lambda"><span class="nav-number">3.</span> <span class="nav-text">4.lambda</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-enumerate"><span class="nav-number">4.</span> <span class="nav-text">5.enumerate</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-set-求交-并-差集"><span class="nav-number">5.</span> <span class="nav-text">6.set 求交 并 差集</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-filter-函数"><span class="nav-number">6.</span> <span class="nav-text">7.filter 函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-python-中的None-True-False"><span class="nav-number">7.</span> <span class="nav-text">8.python 中的None True False</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#9-牛逼的sum函数。"><span class="nav-number">8.</span> <span class="nav-text">9.牛逼的sum函数。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#10-单引号-双引号-三引号"><span class="nav-number">9.</span> <span class="nav-text">10. 单引号 双引号 三引号</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#11-python-赋值-浅拷贝-深拷贝"><span class="nav-number">10.</span> <span class="nav-text">11. python 赋值 浅拷贝 深拷贝</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#12-装饰函数"><span class="nav-number">11.</span> <span class="nav-text">12.装饰函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#13-map-reduce函数。起源于Google鼎鼎大名-Map-Reduce论文。"><span class="nav-number">12.</span> <span class="nav-text">13.map/reduce函数。起源于Google鼎鼎大名 Map/Reduce论文。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#14-赋值"><span class="nav-number">13.</span> <span class="nav-text">14.赋值</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#15"><span class="nav-number">14.</span> <span class="nav-text">15.</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#16-zip-函数"><span class="nav-number">15.</span> <span class="nav-text">16.zip 函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#17-join-函数"><span class="nav-number">16.</span> <span class="nav-text">17 .join()函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#18-可迭代对象。"><span class="nav-number">17.</span> <span class="nav-text">18 可迭代对象。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#19-python中的元组。"><span class="nav-number">18.</span> <span class="nav-text">19.python中的元组。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#20-为什么的大部分语言都是0-based索引。"><span class="nav-number">19.</span> <span class="nav-text">20.为什么的大部分语言都是0-based索引。</span></a></li></ol></div>
             
 
           </div>
@@ -803,7 +823,7 @@
         <!---add by lius--->
 <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 <!---add by lius--->
-<div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
   <span class="with-love" id="animate">
     <i class="fa fa-user"></i>
   </span>
@@ -815,7 +835,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="Symbols count total">20k</span>
+    <span title="Symbols count total">26k</span>
   
 
   
@@ -824,7 +844,7 @@
       <i class="fa fa-coffee"></i>
     </span>
     
-    <span title="Reading time total">36 mins.</span>
+    <span title="Reading time total">47 mins.</span>
   
 </div>
 

@@ -24,3 +24,10 @@ git merge upstream/master
 ```
 - 7.接下来正常add commit即可。
 
+### 2.不小心添加了过大文件
+如果不小心添加了过大文件到暂存区，无论是删除本地文件还是修改.gitingnore文件都是比较棘手的。
+比较简单的做法是：
+ - 1. git log查看commit日志
+ - 2. git reset XXX 重装到某一提交状态。其中XXX为你某次提交的唯一ID如
+ commit aa534e5ae59ac5b0df1e20dde8409c2f5d32b015，可以通过git log看到。只需输入前四位即可完成reset。
+ 然后只需正常输出 git add commit push等命令。  

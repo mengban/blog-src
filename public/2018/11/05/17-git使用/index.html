@@ -108,18 +108,18 @@
 
 
 
-  <meta name="description" content="1.如何参与开源项目 1.开通自己github账户，在PC端安装git环境。 2.fork开源项目到仓库。 3.clone远程forked项目到本地。 4.添加上游 5.同步远程原始项目到本地 1git fetch upstream  6.合并项目。 1git merge upstream/master  7.接下来正常add commit即可。">
-<meta name="keywords" content="git,开源">
+  <meta name="description" content="1.如何参与开源项目 1.开通自己github账户，在PC端安装git环境。 2.fork开源项目到仓库。 3.clone远程forked项目到本地。 4.添加上游 5.同步远程原始项目到本地 1git fetch upstream  6.合并项目。 1git merge upstream/master  7.接下来正常add commit即可。   2.不小心添加了过大文件如果不小心添加了过大文">
+<meta name="keywords" content="开源,git">
 <meta property="og:type" content="article">
 <meta property="og:title" content="git的使用">
 <meta property="og:url" content="http://yoursite.com/2018/11/05/17-git使用/index.html">
 <meta property="og:site_name" content="mengban">
-<meta property="og:description" content="1.如何参与开源项目 1.开通自己github账户，在PC端安装git环境。 2.fork开源项目到仓库。 3.clone远程forked项目到本地。 4.添加上游 5.同步远程原始项目到本地 1git fetch upstream  6.合并项目。 1git merge upstream/master  7.接下来正常add commit即可。">
+<meta property="og:description" content="1.如何参与开源项目 1.开通自己github账户，在PC端安装git环境。 2.fork开源项目到仓库。 3.clone远程forked项目到本地。 4.添加上游 5.同步远程原始项目到本地 1git fetch upstream  6.合并项目。 1git merge upstream/master  7.接下来正常add commit即可。   2.不小心添加了过大文件如果不小心添加了过大文">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2018-11-05T01:13:00.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="git的使用">
-<meta name="twitter:description" content="1.如何参与开源项目 1.开通自己github账户，在PC端安装git环境。 2.fork开源项目到仓库。 3.clone远程forked项目到本地。 4.添加上游 5.同步远程原始项目到本地 1git fetch upstream  6.合并项目。 1git merge upstream/master  7.接下来正常add commit即可。">
+<meta name="twitter:description" content="1.如何参与开源项目 1.开通自己github账户，在PC端安装git环境。 2.fork开源项目到仓库。 3.clone远程forked项目到本地。 4.添加上游 5.同步远程原始项目到本地 1git fetch upstream  6.合并项目。 1git merge upstream/master  7.接下来正常add commit即可。   2.不小心添加了过大文件如果不小心添加了过大文">
 
 
 
@@ -390,7 +390,7 @@
                 
                   <span class="post-meta-item-text">Symbols count in article：</span>
                 
-                <span title="Symbols count in article">177</span>
+                <span title="Symbols count in article">431</span>
               
 
               
@@ -438,6 +438,17 @@
 <li><p>7.接下来正常add commit即可。</p>
 </li>
 </ul>
+<h3 id="2-不小心添加了过大文件"><a href="#2-不小心添加了过大文件" class="headerlink" title="2.不小心添加了过大文件"></a>2.不小心添加了过大文件</h3><p>如果不小心添加了过大文件到暂存区，无论是删除本地文件还是修改.gitingnore文件都是比较棘手的。<br>比较简单的做法是：</p>
+<ul>
+<li><ol>
+<li>git log查看commit日志</li>
+</ol>
+</li>
+<li><ol start="2">
+<li>git reset XXX 重装到某一提交状态。其中XXX为你某次提交的唯一ID如<br>commit aa534e5ae59ac5b0df1e20dde8409c2f5d32b015，可以通过git log看到。只需输入前四位即可完成reset。<br>然后只需正常输出 git add commit push等命令。  </li>
+</ol>
+</li>
+</ul>
 
       
     </div>
@@ -460,13 +471,13 @@
         <!---<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">--->
           
           <!---mod by lius--->
-            <!---<a href="/tags/git/" rel="tag"># git</a>--->
-            <a href="/tags/git/" rel="tag"><i class="fa fa-tag"></i> git</a>
+            <!---<a href="/tags/开源/" rel="tag"># 开源</a>--->
+            <a href="/tags/开源/" rel="tag"><i class="fa fa-tag"></i> 开源</a>
           <!---mod by lius--->
           
           <!---mod by lius--->
-            <!---<a href="/tags/开源/" rel="tag"># 开源</a>--->
-            <a href="/tags/开源/" rel="tag"><i class="fa fa-tag"></i> 开源</a>
+            <!---<a href="/tags/git/" rel="tag"># git</a>--->
+            <a href="/tags/git/" rel="tag"><i class="fa fa-tag"></i> git</a>
           <!---mod by lius--->
           
         </div>
@@ -562,7 +573,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">21</span>
+                    <span class="site-state-item-count">26</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -599,7 +610,13 @@
                     
                       
                     
-                    <span class="site-state-item-count">12</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">15</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -658,7 +675,15 @@
                     
                       
                     
-                    <span class="site-state-item-count">23</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">27</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -703,7 +728,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-如何参与开源项目"><span class="nav-number">1.</span> <span class="nav-text">1.如何参与开源项目</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-如何参与开源项目"><span class="nav-number">1.</span> <span class="nav-text">1.如何参与开源项目</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-不小心添加了过大文件"><span class="nav-number">2.</span> <span class="nav-text">2.不小心添加了过大文件</span></a></li></ol></div>
             
 
           </div>
@@ -726,7 +751,7 @@
         <!---add by lius--->
 <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 <!---add by lius--->
-<div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
   <span class="with-love" id="animate">
     <i class="fa fa-user"></i>
   </span>
@@ -738,7 +763,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="Symbols count total">20k</span>
+    <span title="Symbols count total">26k</span>
   
 
   
@@ -747,7 +772,7 @@
       <i class="fa fa-coffee"></i>
     </span>
     
-    <span title="Reading time total">36 mins.</span>
+    <span title="Reading time total">47 mins.</span>
   
 </div>
 
