@@ -2327,7 +2327,7 @@
                 
                   <span class="post-meta-item-text">Symbols count in article：</span>
                 
-                <span title="Symbols count in article">5.8k</span>
+                <span title="Symbols count in article">7.3k</span>
               
 
               
@@ -2341,7 +2341,7 @@
                 
                   <span class="post-meta-item-text">Reading time &asymp;</span>
                 
-                <span title="Reading time">10 mins.</span>
+                <span title="Reading time">13 mins.</span>
               
             </div>
           
@@ -2419,6 +2419,9 @@
 <h3 id="11-python-赋值-浅拷贝-深拷贝"><a href="#11-python-赋值-浅拷贝-深拷贝" class="headerlink" title="11. python 赋值 浅拷贝 深拷贝"></a>11. python 赋值 浅拷贝 深拷贝</h3><blockquote>
 <p>1.直接赋值。其实就是对象的引用。(别名)。赋值引用，都指向同一个对象。<br>2.浅拷贝。拷贝父对象，不会拷贝父对象的内部子对象。两者是一个独立的对象，但他们的子对象还是指向统一对象（是引用）。<br>3.深拷贝。copy模块的deepcopy()方法，完全拷贝了父对象个其子对象。两者是完全独立的。<br><figure class="highlight python"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> copy</span><br><span class="line">a = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,[<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>]]</span><br><span class="line">b = a.copy()</span><br><span class="line">a[<span class="number">3</span>].append(<span class="number">7</span>)</span><br><span class="line">c = copy.deepcopy(a)</span><br><span class="line">print(a,b,c)</span><br><span class="line">print(id(a),id(b),id(c))</span><br><span class="line"><span class="comment"># [1, 2, 3, [4, 5, 6, 7]] [1, 2, 3, [4, 5, 6, 7]] [1, 2, 3, [4, 5, 6, 7]]</span></span><br><span class="line"><span class="comment"># 2164258934920 2164258672008 2164258840008</span></span><br><span class="line">print(id(a[<span class="number">1</span>]),id(b[<span class="number">1</span>]))</span><br><span class="line"><span class="number">1616669792</span> <span class="number">1616669792</span></span><br></pre></td></tr></table></figure></p>
 </blockquote>
+<blockquote>
+<p>4.关于*<br><figure class="highlight python"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">a = [[]] * <span class="number">2</span> </span><br><span class="line">id(a[<span class="number">0</span>])</span><br><span class="line"><span class="comment">#2653548226632</span></span><br><span class="line">id(a[<span class="number">1</span>])</span><br><span class="line"><span class="comment">#2653548226632</span></span><br></pre></td></tr></table></figure></p>
+</blockquote>
 <h3 id="12-装饰函数"><a href="#12-装饰函数" class="headerlink" title="12.装饰函数"></a>12.装饰函数</h3><p>参见<a href="https://foofish.net/python-dec&gt;orator.html" target="_blank" rel="noopener">装饰函数</a>。写的是真好。</p>
 <h3 id="13-map-reduce函数。起源于Google鼎鼎大名-Map-Reduce论文。"><a href="#13-map-reduce函数。起源于Google鼎鼎大名-Map-Reduce论文。" class="headerlink" title="13.map/reduce函数。起源于Google鼎鼎大名 Map/Reduce论文。"></a>13.map/reduce函数。起源于Google鼎鼎大名 Map/Reduce论文。</h3><blockquote>
 <p>python中map()、filter()、reduce()这三个都是应用于序列的内置函数。<br>map(function, iterable, …)<br>map()函数接收两个参数，一个是函数，一个是序列，map将传入的函数依次作用到序列的每个元素，并把结果作为新的<strong>list</strong>(python2.7) <strong>Iterator</strong>(python3 使用之前需要list化)返回。<br>stackoverflow上有人说可以这样理解map()：<br><figure class="highlight python"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">map(f, iterable)</span><br><span class="line"><span class="comment">#基本上等于：</span></span><br><span class="line">[f(x) <span class="keyword">for</span> x <span class="keyword">in</span> iterable]</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">f</span><span class="params">(x)</span>:</span></span><br><span class="line">	<span class="keyword">return</span> abs(x)</span><br><span class="line"><span class="keyword">for</span> item <span class="keyword">in</span> map(f,[<span class="number">1</span>,<span class="number">-2</span>,<span class="number">3</span>,<span class="number">-4</span>]):</span><br><span class="line">	print(item)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 1 2 3 4</span></span><br></pre></td></tr></table></figure></p>
@@ -2444,6 +2447,49 @@
 <h3 id="20-为什么的大部分语言都是0-based索引。"><a href="#20-为什么的大部分语言都是0-based索引。" class="headerlink" title="20.为什么的大部分语言都是0-based索引。"></a>20.为什么的大部分语言都是0-based索引。</h3><blockquote>
 <p>首先明确索引脚标表示的是对首元素的偏移量。基于0-based的脚标表示 这个在汇编语言时代可以直接使用MOV指令比较方便。即下标可以直接等价成MOV值到偏移寄存器里，而基址寄存器里面保存的是数组头的地址，结合这两个就可以寻址取值。在python中  据python之父介绍 使用0-based的原因主要是python的半开区间切片语法与0-based完美契合。Fortan使用1-based。</p>
 </blockquote>
+<h3 id="21-python-字符串拼接"><a href="#21-python-字符串拼接" class="headerlink" title="21.python 字符串拼接"></a>21.python 字符串拼接</h3><blockquote>
+<p>简介两种:</p>
+<ul>
+<li>1 str1 + str2</li>
+<li>2 ‘’.join([‘1’,’2’]) <figure class="highlight python"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">str1 = <span class="string">"abc"</span></span><br><span class="line">str2 = <span class="string">'def'</span></span><br><span class="line">print(str1 + str1)</span><br><span class="line"><span class="comment"># ""abcdef</span></span><br><span class="line">print(<span class="string">''</span>.join([<span class="string">'1'</span>,<span class="string">'2'</span>])) </span><br><span class="line"><span class="comment"># '12'</span></span><br><span class="line">print(<span class="string">'a'</span>.join([<span class="string">'1'</span>,<span class="string">'2'</span>]))</span><br><span class="line"><span class="comment">#'1a2'</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</blockquote>
+<h3 id="22-python-格式化输出"><a href="#22-python-格式化输出" class="headerlink" title="22.python 格式化输出"></a>22.python 格式化输出</h3><ol>
+<li>整数输出</li>
+</ol>
+<ul>
+<li>%o 八进制</li>
+<li>%d 十进制</li>
+<li>%x 十六进制</li>
+</ul>
+<figure class="highlight python"><figcaption><span>&#123;.line-number&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">print(<span class="string">'%d'</span>%<span class="number">20</span>)</span><br><span class="line"><span class="comment">#20</span></span><br><span class="line">print(<span class="string">'%x'</span>%<span class="number">20</span>)</span><br><span class="line"><span class="comment">#14</span></span><br><span class="line">print(<span class="string">'%o'</span>%<span class="number">20</span>)</span><br><span class="line"><span class="comment">#24</span></span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>浮点数输出</li>
+</ol>
+<ul>
+<li>%f 默认保留小数点后六位。默认进行了四舍五入</li>
+<li><p>%.3f 保留三位小数点</p>
+</li>
+<li><p>%e 保留小数点后六位 以指数形式</p>
+</li>
+<li>%.3e 保留三位小数 科学计数法</li>
+</ul>
+<figure class="highlight python"><figcaption><span>&#123;.line-number&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">print(<span class="string">'%f'</span>%<span class="number">20</span>)</span><br><span class="line"><span class="comment">#20.000000</span></span><br><span class="line">print(<span class="string">'%6.f'</span>%<span class="number">20</span>)</span><br><span class="line"><span class="comment">#    20</span></span><br><span class="line">print(<span class="string">'%.6f'</span>%<span class="number">20</span>)</span><br><span class="line"><span class="comment">#20.000000</span></span><br><span class="line">print(<span class="string">'%.6e'</span>%<span class="number">20</span>)</span><br><span class="line"><span class="comment">#2.000000e+01</span></span><br><span class="line"></span><br><span class="line">print(<span class="string">'%.2f'</span>%<span class="number">20.155</span>)</span><br><span class="line"><span class="comment">#20.16</span></span><br><span class="line">print(<span class="string">'%.2f'</span>%<span class="number">20.154</span>)</span><br><span class="line"><span class="comment">#20.15</span></span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>字符串输出。</li>
+</ol>
+<ul>
+<li><p>%s </p>
+<figure class="highlight python"><figcaption><span>&#123;.line-number&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">print(<span class="string">'%s'</span>% <span class="string">'hello world'</span>)</span><br><span class="line"><span class="comment">#hello world</span></span><br><span class="line">print(<span class="string">'%20s'</span>% <span class="string">'hello world'</span>)  <span class="comment">#右对齐20位</span></span><br><span class="line"><span class="comment">#         hello world</span></span><br><span class="line">print(<span class="string">'%-20s'</span>% <span class="string">'hello world'</span>) <span class="comment">#左对齐20位</span></span><br><span class="line"><span class="comment">#hello world</span></span><br><span class="line">print(<span class="string">'%10.2s'</span> % <span class="string">'hello world'</span>)  <span class="comment"># 右对齐，取2位</span></span><br><span class="line"><span class="comment">#         he</span></span><br><span class="line">print(<span class="string">'%-10.2s'</span> % <span class="string">'hello world'</span>)  <span class="comment"># 左对齐，取2位</span></span><br><span class="line"><span class="comment">#he</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>format用法。相对基本格式化采用的%方法，format功能更为强大。</p>
+</li>
+<li>不带编号，即“{}”</li>
+<li>带数字编号，可调换顺序，即“{1}”、“{2}”</li>
+<li>带关键字，即“{a}”、“{tom}”</li>
+</ul>
+<figure class="highlight python"><figcaption><span>&#123;.line-number&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">print(<span class="string">'&#123;&#125;&#123;&#125;'</span>.format(<span class="string">'hello'</span>,<span class="string">'world'</span>))</span><br><span class="line"><span class="comment">#helloworld</span></span><br><span class="line">print(<span class="string">'&#123;&#125; &#123;&#125;'</span>.format(<span class="string">'hello'</span>,<span class="string">'world'</span>))</span><br><span class="line"><span class="comment">#hello world</span></span><br><span class="line">print(<span class="string">'&#123;a&#125; &#123;b&#125;'</span>.format(a=<span class="string">'hello'</span>,b=<span class="string">'world'</span>))</span><br><span class="line"><span class="comment">#hello world</span></span><br><span class="line">print(<span class="string">'&#123;b&#125; &#123;a&#125;'</span>.format(a=<span class="string">'hello'</span>,b=<span class="string">'world'</span>))</span><br><span class="line"><span class="comment">#world hello</span></span><br><span class="line">print(<span class="string">'&#123;0&#125; &#123;1&#125;'</span>.format(<span class="string">'hello'</span>,<span class="string">'world'</span>))</span><br><span class="line"><span class="comment">#hello world</span></span><br><span class="line">print(<span class="string">'&#123;1&#125; &#123;0&#125;'</span>.format(<span class="string">'hello'</span>,<span class="string">'world'</span>))</span><br><span class="line"><span class="comment">#world hello</span></span><br></pre></td></tr></table></figure>
 
           
         
@@ -2703,7 +2749,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="Symbols count total">26k</span>
+    <span title="Symbols count total">29k</span>
   
 
   
@@ -2712,7 +2758,7 @@
       <i class="fa fa-coffee"></i>
     </span>
     
-    <span title="Reading time total">47 mins.</span>
+    <span title="Reading time total">54 mins.</span>
   
 </div>
 

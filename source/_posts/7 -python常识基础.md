@@ -204,6 +204,14 @@ print(id(a),id(b),id(c))
 print(id(a[1]),id(b[1]))
 1616669792 1616669792
 ```
+> 4.关于*
+``` python {.line-numbers}
+a = [[]] * 2 
+id(a[0])
+#2653548226632
+id(a[1])
+#2653548226632
+```
 
 ### 12.装饰函数
 参见[装饰函数](https://foofish.net/python-dec>orator.html)。写的是真好。
@@ -283,3 +291,98 @@ print('-'.join(seq))
 
 ### 20.为什么的大部分语言都是0-based索引。
 > 首先明确索引脚标表示的是对首元素的偏移量。基于0-based的脚标表示 这个在汇编语言时代可以直接使用MOV指令比较方便。即下标可以直接等价成MOV值到偏移寄存器里，而基址寄存器里面保存的是数组头的地址，结合这两个就可以寻址取值。在python中  据python之父介绍 使用0-based的原因主要是python的半开区间切片语法与0-based完美契合。Fortan使用1-based。
+
+### 21.python 字符串拼接
+>简介两种:
+- 1 str1 + str2
+- 2 ''.join(['1','2']) 
+``` python {.line-numbers}
+str1 = "abc"
+str2 = 'def'
+print(str1 + str1)
+# ""abcdef
+print(''.join(['1','2'])) 
+# '12'
+print('a'.join(['1','2']))
+#'1a2'
+```
+
+### 22.python 格式化输出
+1. 整数输出
+- %o 八进制
+- %d 十进制
+- %x 十六进制
+
+``` python {.line-number}
+print('%d'%20)
+#20
+print('%x'%20)
+#14
+print('%o'%20)
+#24
+
+```
+
+2. 浮点数输出
+- %f 默认保留小数点后六位。默认进行了四舍五入
+- %.3f 保留三位小数点
+
+- %e 保留小数点后六位 以指数形式
+- %.3e 保留三位小数 科学计数法
+
+``` python {.line-number}
+print('%f'%20)
+#20.000000
+print('%6.f'%20)
+#    20
+print('%.6f'%20)
+#20.000000
+print('%.6e'%20)
+#2.000000e+01
+
+print('%.2f'%20.155)
+#20.16
+print('%.2f'%20.154)
+#20.15
+
+
+```
+
+3. 字符串输出。
+- %s 
+``` python {.line-number}
+print('%s'% 'hello world')
+#hello world
+print('%20s'% 'hello world')  #右对齐20位
+#         hello world
+print('%-20s'% 'hello world') #左对齐20位
+#hello world
+print('%10.2s' % 'hello world')  # 右对齐，取2位
+#         he
+print('%-10.2s' % 'hello world')  # 左对齐，取2位
+#he  
+
+```
+- format用法。相对基本格式化采用的%方法，format功能更为强大。
+- 不带编号，即“{}”
+- 带数字编号，可调换顺序，即“{1}”、“{2}”
+- 带关键字，即“{a}”、“{tom}”
+
+``` python {.line-number}
+
+print('{}{}'.format('hello','world'))
+#helloworld
+print('{} {}'.format('hello','world'))
+#hello world
+print('{a} {b}'.format(a='hello',b='world'))
+#hello world
+print('{b} {a}'.format(a='hello',b='world'))
+#world hello
+print('{0} {1}'.format('hello','world'))
+#hello world
+print('{1} {0}'.format('hello','world'))
+#world hello
+
+```
+
+

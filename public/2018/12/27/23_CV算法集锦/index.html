@@ -116,10 +116,14 @@
 <meta property="og:site_name" content="mengban">
 <meta property="og:description" content="1. NMS算法(非极大值抑制算法)该算法主要目的是筛选出重复框，保留有效框。主要用在 region proposal阶段以及最后框出的阶段。假设进行非极大值抑制的输入为2000x20的矩阵，2000表示该图像上框的个数，20表示类别数：具体步骤如下：  1 对2000×20维矩阵中每列按从大到小进行排序（每列表示一类，共20类。同一类可能有多个目标，如上图有两个人）；  2 从每列最大的得分建议">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://pic4.zhimg.com/80/v2-fad3333df9a87c1c4f1db4b20557da6f_hd.jpg">
+<meta property="og:image" content="https://raw.githubusercontent.com/vdumoulin/conv_arithmetic/master/gif/no_padding_no_strides.gif">
+<meta property="og:image" content="https://raw.githubusercontent.com/vdumoulin/conv_arithmetic/master/gif/no_padding_no_strides_transposed.gif">
 <meta property="og:updated_time" content="2018-12-27T03:35:00.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CV算法集锦">
 <meta name="twitter:description" content="1. NMS算法(非极大值抑制算法)该算法主要目的是筛选出重复框，保留有效框。主要用在 region proposal阶段以及最后框出的阶段。假设进行非极大值抑制的输入为2000x20的矩阵，2000表示该图像上框的个数，20表示类别数：具体步骤如下：  1 对2000×20维矩阵中每列按从大到小进行排序（每列表示一类，共20类。同一类可能有多个目标，如上图有两个人）；  2 从每列最大的得分建议">
+<meta name="twitter:image" content="https://pic4.zhimg.com/80/v2-fad3333df9a87c1c4f1db4b20557da6f_hd.jpg">
 
 
 
@@ -394,7 +398,7 @@
                 
                   <span class="post-meta-item-text">Symbols count in article：</span>
                 
-                <span title="Symbols count in article">1.3k</span>
+                <span title="Symbols count in article">3.2k</span>
               
 
               
@@ -408,7 +412,7 @@
                 
                   <span class="post-meta-item-text">Reading time &asymp;</span>
                 
-                <span title="Reading time">2 mins.</span>
+                <span title="Reading time">6 mins.</span>
               
             </div>
           
@@ -453,6 +457,19 @@
 </ul>
 </li>
 <li>非线性归一化 比如log</li>
+<li>add in 2019-03-18</li>
+<li>提出背景<ul>
+<li>网络更新参数后使得输出的分布发生变化(即下一层的输入的分布发生变化)。网络参数需要不断调整来适应这种变化 因此会影响网络的学习速率。其次 还会使网络输出进入饱和区，减缓网络的收敛速度。此成为Internal Convarite shift。</li>
+<li>为解决这个问题 提出了归一化。即对每一个特征进行归一化，使其分布0均值 方差为1。</li>
+<li>具体解决方案：<ul>
+<li>BN。批归一化。即在每一个Batch的同一维度特征进行BN.</li>
+<li>LN。层归一化。避开Batch维度 在每一个输入上进行归一化 H*W*C上的归一化。</li>
+<li>IN。实例归一化。具体到某一次输入的每个channel上分别归一化。</li>
+<li>GN。介于LN 和 IN 的之间 将channel进行分组 然后进行归一化操作。<br><img src="https://pic4.zhimg.com/80/v2-fad3333df9a87c1c4f1db4b20557da6f_hd.jpg" alt="示意图"></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 <h3 id="3-动量更新方法"><a href="#3-动量更新方法" class="headerlink" title="3.动量更新方法"></a>3.动量更新方法</h3><ul>
 <li><p>传统SGD更新方法。更新速度慢</p>
@@ -466,7 +483,33 @@
 <p>其中一般的，v初始为0，mu是优化参数，一般初始化参数为0.9，当使用交叉验证的时候，参数mu一般设置成[0.5,0.9,0.95,0.99]，在开始训练的时候，梯度下降较快，可以设置mu为0.5，在一段时间后逐渐变慢了，mu可以设置为0.9、0.99。也正是因为有了“惯性”，这个比SGD会稳定一些。</p>
 </blockquote>
 <h3 id="4-CE交叉熵-与-BCE二分类交叉熵"><a href="#4-CE交叉熵-与-BCE二分类交叉熵" class="headerlink" title="4.CE交叉熵 与 BCE二分类交叉熵"></a>4.CE交叉熵 与 BCE二分类交叉熵</h3><p>二者是不一样的。参见(CE and BCE)[<a href="https://zhuanlan.zhihu.com/p/48078990]" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/48078990]</a></p>
-<h3 id="5-BP算法"><a href="#5-BP算法" class="headerlink" title="5.BP算法"></a>5.BP算法</h3><p>BP算法的整体思路如下：对于每个给定的训练样本，首先进行前向计算，计算出网络中每一层的激活值和网络的输出。对于最后一层(输出层)，我们可以直接计算出网络的输出值与已经给出的标签值(label)直接的差距，我们将这个值定义为残差δ。对于输出层之前的隐藏层L，我们将根据L+1层各节点的加权平均值来计算第L层的残差。<br>插入一些我个人对BP算法的一点比较容易理解的解释(如有错误请指出)：在反向传播过程中，若第x层的a节点通过权值W对x+1层的b节点有贡献，则在反向传播过程中，梯度通过权值W从b节点传播回a节点。不管下面的公式推导，还是后面的卷积神经网络，在反向传播的过程中，都是遵循这样的一个规律。</p>
+<h3 id="5-BP算法"><a href="#5-BP算法" class="headerlink" title="5.BP算法"></a>5.BP算法</h3><p>BP算法的整体思路如下：对于每个给定的训练样本，首先进行前向计算，计算出网络中每一层的激活值和网络的输出。对于最后一层(输出层)，我们可以直接计算出网络的输出值与已经给出的标签值(label)直接的差距，我们将这个值定义为残差δ。对于输出层之前的隐藏层L，我们将根据L+1层各节点的加权平均值来计算第L层的残差。<br>插入一些我个人对BP算法的一点比较容易理解的解释(如有错误请指出)：在反向传播   过程中，若第x层的a节点通过权值W对x+1层的b节点有贡献，则在反向传播过程中，梯度通过权值W从b节点传播回a节点。不管下面的公式推导，还是后面的卷积神经网络，在反向传播的过程中，都是遵循这样的一个规律。</p>
+<h3 id="6-anchor的还原。"><a href="#6-anchor的还原。" class="headerlink" title="6.anchor的还原。"></a>6.anchor的还原。</h3><p>Q:在SSD YOLO 以及Faster-RCNN中均提出了一个anchor的概念,所以问题产生了:在feature map上产生的anchor是在怎么还原到原图上的呢?</p>
+<ul>
+<li>Faster R-CNN<br>Faster RCNN中采用3<em>3卷积 padding为1，然后经过2\</em>2的pooling。输出的尺寸刚好类似于将原始图片进行了resize。故将anchor直接还原。(等待少卿确认)</li>
+<li>SSD 中采用了类似的结构??</li>
+</ul>
+<h3 id="7-关于卷积的一些看法"><a href="#7-关于卷积的一些看法" class="headerlink" title="7.关于卷积的一些看法"></a>7.关于卷积的一些看法</h3><p>顺便吐槽一下CNN结构:我们在做网络结构分析或网络结构设计的时候，经常会有这样的感觉，输出的数想让它代表什么就代表什么，有时候甚至看起来很没有道理，但是最后这样的操作却能有效果，最重要的原因就在于卷积操作是没有实际的意义的，它只是很强的抽取能力，但是它并不知道会抽取出什么东西，所以如果我们设计合适的损失函数，就可以任意指定输出，哪怕这种指定看起来并没有道理。CNN本质上就是连接input与output之间的一个极其复杂的，表达能力很强的，并且很有潜力的函数，但是这个函数最终的能力能不能充分发挥出来，要取决于很多东西，损失函数，训练技巧，数据集等等。<br><a href="https://bbs.pinggu.org/thread-6647401-1-1.html" target="_blank" rel="noopener">ref</a></p>
+<h3 id="8-转置卷积。"><a href="#8-转置卷积。" class="headerlink" title="8.转置卷积。"></a>8.转置卷积。</h3><p><img src="https://raw.githubusercontent.com/vdumoulin/conv_arithmetic/master/gif/no_padding_no_strides.gif" alt=""><br><img src="https://raw.githubusercontent.com/vdumoulin/conv_arithmetic/master/gif/no_padding_no_strides_transposed.gif" alt=""></p>
+<p>注意图中蓝色（下面）是输入，绿色（上面）是输出，卷积和反卷积在 p、s、k  p、s、k 等参数一样时，是相当于 i i 和 o o 调了个位。<br>这里说明了反卷积的时候，是有补0的，即使人家管这叫no padding（ p=0 p=0），这是因为卷积的时候从蓝色 4×4 4×4 缩小为绿色 2×2 2×2，所以对应的 p=0 p=0 反卷积应该从蓝色 2×2 2×2 扩展成绿色 4×4 4×4。而且转置并不是指这个 3×3 3×3 的核 w变为 w.T，但如果将卷积计算写成矩阵乘法（在程序中，为了提高卷积操作的效率，就可以这么干，比如tensorflow中就是这种实现）， Y-&gt; =CX-&gt; （其中 Y-&gt;表示将Y→ 拉成一维向量， XX→ 同理），那么反卷积确实可以表示为 C.TY→，而这样的矩阵乘法，恰恰等于 W左右翻转再上下翻转后与补0的 Y 卷积的情况。</p>
+<p>然后就产生了第三个confuse：“补0了会不会有影响，还能通过反卷积近似输入 X吗？”其实反卷积也不一定能达到近似的效果，图像里的卷积，相当于一种相关操作，而反卷积维持了这种相关操作时的 w与 X、与 Y 之间的联系维持了。至于补0后操作是否还等价，上一段已经说明了是等价的，读者可以在阅读完后面的文章后自己尝试一下。<br>tensorflow也是这样实现反卷积的。</p>
+<h3 id="9-对NN的核心贡献"><a href="#9-对NN的核心贡献" class="headerlink" title="9.对NN的核心贡献"></a>9.对NN的核心贡献</h3><ul>
+<li>目前来看，很多对 NN 的贡献（特别是核心的贡献），都在于NN的梯度流上，比如：<ul>
+<li>sigmoid会饱和，造成梯度消失，于是有了ReLU。</li>
+<li>ReLU负半轴是死区，造成梯度变0，于是有了LeakyReLU，PReLU。</li>
+<li>强调梯度和权值分布的稳定性，由此有了ELU，以及较新的SELU。</li>
+<li>太深了，梯度传不下去，于是有了highway。</li>
+<li>干脆连highway的参数都不要，直接变残差，于是有了ResNet。</li>
+<li>强行稳定参数的均值和方差，于是有了BatchNorm。</li>
+<li>在梯度流中增加噪声，于是有了 Dropout。</li>
+<li>RNN梯度不稳定，于是加几个通路和门控，于是有了LSTM。</li>
+<li>LSTM简化一下，有了GRU。</li>
+<li>GAN的JS散度有问题，会导致梯度消失或无效，于是有了WGAN。</li>
+<li>WGAN对梯度的clip有问题，于是有了WGAN-GP。</li>
+</ul>
+</li>
+</ul>
+<h3 id="10-超清楚的优化算法讲解。看完豁然开朗。"><a href="#10-超清楚的优化算法讲解。看完豁然开朗。" class="headerlink" title="10.超清楚的优化算法讲解。看完豁然开朗。"></a>10.超清楚的优化算法讲解。看完豁然开朗。</h3><p><a href="https://www.jianshu.com/p/548049548fb9" target="_blank" rel="noopener">简书</a><br><a href="https://segmentfault.com/a/1190000012668819?utm_source=tag-newest#articleHeader4" target="_blank" rel="noopener">segment</a></p>
 
       
     </div>
@@ -741,7 +784,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-NMS算法-非极大值抑制算法"><span class="nav-number">1.</span> <span class="nav-text">1. NMS算法(非极大值抑制算法)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-Batch-Normalization-reference"><span class="nav-number">2.</span> <span class="nav-text">2. Batch Normalization reference</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-动量更新方法"><span class="nav-number">3.</span> <span class="nav-text">3.动量更新方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-CE交叉熵-与-BCE二分类交叉熵"><span class="nav-number">4.</span> <span class="nav-text">4.CE交叉熵 与 BCE二分类交叉熵</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-BP算法"><span class="nav-number">5.</span> <span class="nav-text">5.BP算法</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-NMS算法-非极大值抑制算法"><span class="nav-number">1.</span> <span class="nav-text">1. NMS算法(非极大值抑制算法)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-Batch-Normalization-reference"><span class="nav-number">2.</span> <span class="nav-text">2. Batch Normalization reference</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-动量更新方法"><span class="nav-number">3.</span> <span class="nav-text">3.动量更新方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-CE交叉熵-与-BCE二分类交叉熵"><span class="nav-number">4.</span> <span class="nav-text">4.CE交叉熵 与 BCE二分类交叉熵</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-BP算法"><span class="nav-number">5.</span> <span class="nav-text">5.BP算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-anchor的还原。"><span class="nav-number">6.</span> <span class="nav-text">6.anchor的还原。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-关于卷积的一些看法"><span class="nav-number">7.</span> <span class="nav-text">7.关于卷积的一些看法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-转置卷积。"><span class="nav-number">8.</span> <span class="nav-text">8.转置卷积。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#9-对NN的核心贡献"><span class="nav-number">9.</span> <span class="nav-text">9.对NN的核心贡献</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#10-超清楚的优化算法讲解。看完豁然开朗。"><span class="nav-number">10.</span> <span class="nav-text">10.超清楚的优化算法讲解。看完豁然开朗。</span></a></li></ol></div>
             
 
           </div>
@@ -776,7 +819,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="Symbols count total">26k</span>
+    <span title="Symbols count total">29k</span>
   
 
   
@@ -785,7 +828,7 @@
       <i class="fa fa-coffee"></i>
     </span>
     
-    <span title="Reading time total">47 mins.</span>
+    <span title="Reading time total">54 mins.</span>
   
 </div>
 
